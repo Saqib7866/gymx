@@ -1,0 +1,14 @@
+.Carosel-Caption{
+  padding-bottom: 250px;
+}
+
+.Carosel-Caption h2{
+    font-size: 50px;
+    text-transform: uppercase;
+}
+.carouse-control.right{
+    background-image: none;
+}
+.carouse-control.left{
+    background-image: none;
+}

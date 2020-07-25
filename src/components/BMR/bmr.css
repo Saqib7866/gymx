@@ -1,0 +1,8 @@
+.myBox {
+  box-shadow: 0 10px 20px #ffc30b, 0 6px 6px #ffc30b;
+  height: auto;
+}
+
+.boxMragin {
+  margin-left: 40px;
+}

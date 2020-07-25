@@ -1,0 +1,14 @@
+.back {
+  background-image: url(../../assets/img/theme/bghome.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 110px;
+  padding-bottom: 115px;
+}
+
+.section {
+  height: 100vh;
+}
+.body {
+  height: 100%;
+}
