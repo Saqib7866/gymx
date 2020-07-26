@@ -1,4 +1,5 @@
 import React from "react";
+import { history } from "../../history";
 
 // reactstrap components
 import {
@@ -15,17 +16,57 @@ import {
   Container,
   Row,
   Col,
+  Alert,
+  Spinner,
 } from "reactstrap";
 
 import SimpleFooter from "components/Footers/SimpleFooter.js";
+import axios from "axios";
+import { Redirect } from "react-router";
 
 class Login extends React.Component {
+  state = {
+    email: "",
+    password: "",
+    error: "",
+    loading: false,
+  };
+
   componentDidMount() {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
     this.refs.main.scrollTop = 0;
   }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    if (!this.state.loading) {
+      this.setState({ error: "" });
+      this.setState({ loading: true });
+      axios
+        .post(process.env.REACT_APP_API_URL + "/auth/local", {
+          identifier: this.state.email,
+          password: this.state.password,
+        })
+        .then((res) => {
+          localStorage.setItem(process.env.REACT_APP_TOKEN_NAME, res.data.jwt);
+          history.push("/");
+          window.location.reload();
+          this.setState({ loading: false });
+        })
+        .catch((error) => {
+          this.setState({
+            error: error.response.data.data[0].messages[0].message,
+          });
+          this.setState({ loading: false });
+        });
+    }
+  };
+
   render() {
+    if (localStorage.getItem(process.env.REACT_APP_TOKEN_NAME) !== null) {
+      return <Redirect to="/" />;
+    }
     return (
       <>
         <main ref="main">
@@ -43,7 +84,11 @@ class Login extends React.Component {
                       </div>
                     </CardHeader>
                     <CardBody className="px-lg-5 py-lg-5">
-                      <Form role="form">
+                      {this.state.error && (
+                        <Alert color="danger">{this.state.error}</Alert>
+                      )}
+
+                      <Form role="form" onSubmit={this.handleSubmit}>
                         <FormGroup className="mb-3">
                           <InputGroup className="input-group-alternative">
                             <InputGroupAddon addonType="prepend">
@@ -51,7 +96,15 @@ class Login extends React.Component {
                                 <i className="ni ni-email-83" />
                               </InputGroupText>
                             </InputGroupAddon>
-                            <Input placeholder="Email" type="email" />
+                            <Input
+                              placeholder="Email"
+                              type="email"
+                              value={this.state.email}
+                              onChange={(e) => {
+                                this.setState({ email: e.target.value });
+                              }}
+                              required
+                            />
                           </InputGroup>
                         </FormGroup>
                         <FormGroup>
@@ -65,31 +118,25 @@ class Login extends React.Component {
                               placeholder="Password"
                               type="password"
                               autoComplete="off"
+                              value={this.state.password}
+                              onChange={(e) => {
+                                this.setState({ password: e.target.value });
+                              }}
                             />
                           </InputGroup>
                         </FormGroup>
 
-                        <div className="custom-control custom-control-alternative custom-checkbox">
-                          <input
-                            className="custom-control-input"
-                            id=" customCheckLogin"
-                            type="checkbox"
-                          />
-                          <label
-                            className="custom-control-label"
-                            htmlFor=" customCheckLogin"
-                          >
-                            <span>Remember me</span>
-                          </label>
-                        </div>
                         <div className="text-center">
                           <Button
                             className="my-4"
                             color="primary"
-                            type="button"
-                            href="/ndash"
+                            type="submit"
                           >
-                            Sign in
+                            {this.state.loading ? (
+                              <Spinner color="white" size="sm" />
+                            ) : (
+                              "Sign in"
+                            )}
                           </Button>
                         </div>
                       </Form>

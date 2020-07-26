@@ -70,7 +70,6 @@ class Navbarr extends Component {
                   <ReactBootStrap.NavDropdown.Item href="BMR/BMI">
                     <strong>BMR/BMI</strong>
                   </ReactBootStrap.NavDropdown.Item>
-                  <ReactBootStrap.NavDropdown.Divider />
                 </ReactBootStrap.NavDropdown>
                 <ReactBootStrap.Nav.Link href="#ContactUs">
                   <strong> Contact</strong>
@@ -78,36 +77,65 @@ class Navbarr extends Component {
               </ReactBootStrap.Nav>
             </div>
 
-            <div className="miniclass3">
-              <NavItem className="d-none d-lg-block ml-lg-4">
-                <Button
-                  className="btn-neutral btn-icon"
-                  color="default"
-                  href="/Register"
-                  target="_blank"
+            {localStorage.getItem(process.env.REACT_APP_TOKEN_NAME) !==
+              null && (
+              <div className="ml-auto mr-3">
+                <ReactBootStrap.NavDropdown
+                  className="portfolio-nav"
+                  title="UserName"
+                  id="collasible-nav-dropdown"
                 >
-                  <span className="btn-inner--icon">
-                    <i className="fa fa-user-plus mr-2" />
-                  </span>
-                  <span className="nav-link-inner--text ml-1">Register</span>
-                </Button>
-              </NavItem>
-            </div>
-            <div>
-              <NavItem className="d-none d-lg-block ml-lg-4">
-                <Button
-                  className="btn-neutral btn-icon"
-                  color="default"
-                  href="/Login  "
-                  target="_blank"
-                >
-                  <span className="btn-inner--icon">
-                    <i className="fa fa-sign-in mr-2" />
-                  </span>
-                  <span className="nav-link-inner--text ml-1">Login</span>
-                </Button>
-              </NavItem>
-            </div>
+                  <ReactBootStrap.NavDropdown.Item>
+                    <strong>Settings</strong>
+                  </ReactBootStrap.NavDropdown.Item>
+                  <ReactBootStrap.NavDropdown.Divider />
+                  <ReactBootStrap.NavDropdown.Item
+                    onClick={() => {
+                      localStorage.removeItem(process.env.REACT_APP_TOKEN_NAME);
+                      window.location.reload();
+                    }}
+                  >
+                    <strong>Logout</strong>
+                  </ReactBootStrap.NavDropdown.Item>
+                </ReactBootStrap.NavDropdown>
+              </div>
+            )}
+
+            {localStorage.getItem(process.env.REACT_APP_TOKEN_NAME) ===
+              null && (
+              <div className="row ml-auto mr-3">
+                <div>
+                  <NavItem className="d-none d-lg-block ml-lg-4">
+                    <Button
+                      className="btn-neutral btn-icon"
+                      color="default"
+                      href="/Register"
+                    >
+                      <span className="btn-inner--icon">
+                        <i className="fa fa-user-plus mr-2" />
+                      </span>
+                      <span className="nav-link-inner--text ml-1">
+                        Register
+                      </span>
+                    </Button>
+                  </NavItem>
+                </div>
+                <div>
+                  <NavItem className="d-none d-lg-block ml-lg-4">
+                    <Button
+                      className="btn-neutral btn-icon"
+                      color="default"
+                      href="/Login"
+                    >
+                      <span className="btn-inner--icon">
+                        <i className="fa fa-sign-in mr-2" />
+                      </span>
+                      <span className="nav-link-inner--text ml-1">Login</span>
+                    </Button>
+                  </NavItem>
+                </div>
+              </div>
+            )}
           </ReactBootStrap.Navbar.Collapse>
         </ReactBootStrap.Navbar>
       </div>
