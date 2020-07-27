@@ -20,6 +20,7 @@ import {
 import Axios from "axios";
 import { history } from "../../history";
 import AppContext from "Context/AppContext";
+import { Redirect } from "react-router";
 
 class Register extends React.Component {
   static contextType = AppContext;
@@ -34,9 +35,11 @@ class Register extends React.Component {
   };
 
   componentDidMount() {
-    document.documentElement.scrollTop = 0;
-    document.scrollingElement.scrollTop = 0;
-    this.refs.main.scrollTop = 0;
+    if (localStorage.getItem(process.env.REACT_APP_TOKEN_NAME) === null) {
+      document.documentElement.scrollTop = 0;
+      document.scrollingElement.scrollTop = 0;
+      this.refs.main.scrollTop = 0;
+    }
   }
 
   handleSubmit = (e) => {
@@ -76,6 +79,9 @@ class Register extends React.Component {
   };
 
   render() {
+    if (localStorage.getItem(process.env.REACT_APP_TOKEN_NAME) !== null) {
+      return <Redirect to="/" />;
+    }
     return (
       <>
         <main ref="main">
