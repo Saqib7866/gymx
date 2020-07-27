@@ -41,7 +41,7 @@ class NRegister extends React.Component {
                     <CardBody className="px-sm-5 py-sm-5">
                       <div className="text-center">
                         <h4 className="mb-3 " style={{ color: "white" }}>
-                          <strong>Sign Up With Credentials</strong>
+                          <strong>Sign Up</strong>
                         </h4>
                       </div>
                       <Form role="form">

@@ -18,6 +18,7 @@ import {
   Col,
   Alert,
   Spinner,
+  NavLink,
 } from "reactstrap";
 
 import SimpleFooter from "components/Footers/SimpleFooter.js";
@@ -146,19 +147,11 @@ class Login extends React.Component {
                     </CardBody>
                   </Card>
                   <Row className="mt-3">
-                    <Col xs="6">
-                      <a
-                        className="text-light"
-                        href="#pablo"
-                        onClick={(e) => e.preventDefault()}
-                      >
-                        <small>Forgot password?</small>
-                      </a>
-                    </Col>
+                    <Col xs="6"></Col>
                     <Col className="text-right" xs="6">
-                      <a className="text-light" href="/Register">
-                        <small>Create new account</small>
-                      </a>
+                      <NavLink to="/Register" className=" btn text-light">
+                        <small> Create new account</small>
+                      </NavLink>
                     </Col>
                   </Row>
                 </Col>

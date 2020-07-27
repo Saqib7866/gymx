@@ -16,6 +16,8 @@ import Workout from "components/Workout/workout.js";
 import Workout1 from "components/Workout/workout1.js";
 import Main from "components/BMR/Main.jsx";
 import Cart from "components/cart/Cart.js";
+import Events from "./examples/Events.js";
+import Userdash from "./examples/userdash.js";
 
 class Index extends React.Component {
   componentDidMount() {
@@ -32,6 +34,8 @@ class Index extends React.Component {
             <About />
             <Carousel />
             <ContactUs />
+            <Events />
+            <Userdash />
           </div>
         </main>
       </>

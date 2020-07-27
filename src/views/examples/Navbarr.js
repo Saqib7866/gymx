@@ -118,16 +118,14 @@ class Navbarr extends Component {
               <div className="row ml-auto mr-3">
                 <div>
                   <NavItem className="d-none d-lg-block ml-lg-4">
-                    <Button
-                      className="btn-neutral btn-icon"
-                      color="default"
-                      href="/Register"
-                    >
+                    <Button className="btn-neutral btn-icon" color="default">
                       <span className="btn-inner--icon">
                         <i className="fa fa-user-plus mr-2" />
                       </span>
                       <span className="nav-link-inner--text ml-1">
-                        Register
+                        <NavLink to="/Register" className="Reister">
+                          Register
+                        </NavLink>
                       </span>
                     </Button>
                   </NavItem>
@@ -142,7 +140,11 @@ class Navbarr extends Component {
                       <span className="btn-inner--icon">
                         <i className="fa fa-sign-in mr-2" />
                       </span>
-                      <span className="nav-link-inner--text ml-1">Login</span>
+                      <span className="nav-link-inner--text ml-1">
+                        <NavLink to="/Login" className="Login">
+                          Login
+                        </NavLink>
+                      </span>
                     </Button>
                   </NavItem>
                 </div>

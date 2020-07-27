@@ -19,7 +19,12 @@ import {
 } from "reactstrap";
 
 class Nuts extends React.Component {
-  state = {};
+  state = {
+    name: "Asad",
+    achievments: "Nil",
+    fee: "200",
+    tel: "030000",
+  };
   componentDidMount() {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
@@ -41,26 +46,24 @@ class Nuts extends React.Component {
                             <i className="ni ni-check-bold" />
                           </div>
                           <h6 className="text-primary text-uppercase">
-                            Nutritionist Name
+                            {this.state.name}
                           </h6>
                           <p className="description mt-3">
-                            Argon is a great free UI package based on Bootstrap
-                            4 that includes the most important components and
-                            features.
+                            {this.state.achievments}
                           </p>
                           <div>
                             <Badge color="primary" pill className="mr-1">
-                              $46
+                              ${this.state.fee}
                             </Badge>
                             <Badge color="primary" pill className="mr-1">
-                              +9230862727***
+                              {this.state.tel}
                             </Badge>
                           </div>
                           <Button
+                            onClick="showAlert()"
                             className="mt-4"
                             color="primary"
-                            href="#pablo"
-                            onClick={(e) => e.preventDefault()}
+                            href=""
                           >
                             Book & Appointment
                           </Button>

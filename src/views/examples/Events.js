@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import "./Navbarr.css";
 import "assets/vendor/font-awesome/css/font-awesome.min.css";
 import * as ReactBootStrap from "react-bootstrap";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast, Zoom, Bounce } from "react-toastify";
+
 import {
   Button,
   Card,
@@ -10,13 +13,23 @@ import {
   CardTitle,
   CardText,
   Spinner,
-  Alert,
 } from "reactstrap";
 class Events extends Component {
   state = {
     eventName: "Protein",
     eventDescp: "Protein for muscle building",
     eventImg: "../../assets/img/theme/bghome.jpg",
+  };
+  successToast = (name) => {
+    toast("🦄 You Have Been Registered In " + name + " Succesfully", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
   render() {
     return (
@@ -26,7 +39,7 @@ class Events extends Component {
             <strong>Current Events</strong>
           </h2>
           <Card style={{ width: "18rem" }}>
-            <CardImg variant="top" src="{this.state.eventImg} " />
+            <CardImg variant="top" src={this.state.eventImg} />
             <CardBody>
               <CardTitle>
                 <h4>
@@ -41,16 +54,18 @@ class Events extends Component {
             </CardBody>
 
             <CardBody className="text-center ">
-              <Button className="mt-4" color="default" type="submit">
-                {this.state.loading ? (
-                  <Spinner color="white" size="sm" />
-                ) : (
-                  "Register Yourself"
-                )}
+              <Button
+                className="mt-4"
+                color="default"
+                type="submit"
+                onClick={this.successToast(this.state.eventName)}
+              >
+                Register Yourself
               </Button>
             </CardBody>
           </Card>
         </div>
+        <ToastContainer />
       </div>
     );
   }

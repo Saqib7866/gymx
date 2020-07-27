@@ -3,27 +3,17 @@ import React from "react";
 import classnames from "classnames";
 import "./userdash.css";
 // reactstrap components
-import {
-  Badge,
-  Button,
-  Card,
-  CardBody,
-  CardImg,
-  FormGroup,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
-  Container,
-  Row,
-  Col,
-} from "reactstrap";
+import { Button, FormGroup, Input, Row, Col, NavLink } from "reactstrap";
 
 class Userdash extends React.Component {
   state = {
     huss() {
       this.setstate.edit = "enabled";
     },
+    name: "",
+    contact: "",
+    address: "",
+    newPass: "",
   };
   render() {
     return (
@@ -63,6 +53,10 @@ class Userdash extends React.Component {
                       disabled
                       placeholder="Name"
                       type="text"
+                      value={this.state.name}
+                      onChange={(e) => {
+                        this.setState({ name: e.target.value });
+                      }}
                     />
                     <Input
                       style={{ marginTop: "5px" }}
@@ -71,6 +65,10 @@ class Userdash extends React.Component {
                       disabled
                       placeholder="Contact Number"
                       type="number"
+                      value={this.state.contact}
+                      onChange={(e) => {
+                        this.setState({ name: e.target.contact });
+                      }}
                     />
                     <Input
                       style={{ marginTop: "5px" }}
@@ -79,6 +77,10 @@ class Userdash extends React.Component {
                       disabled
                       placeholder="New Password"
                       type="text"
+                      value={this.state.newPass}
+                      onChange={(e) => {
+                        this.setState({ name: e.target.newPass });
+                      }}
                     />
                     <Input
                       style={{ marginTop: "5px" }}
@@ -87,6 +89,10 @@ class Userdash extends React.Component {
                       disabled
                       placeholder="Address"
                       type="text"
+                      value={this.state.address}
+                      onChange={(e) => {
+                        this.setState({ name: e.target.address });
+                      }}
                     />
                     <Button style={{ marginTop: "5px" }} color="danger">
                       Save
@@ -176,7 +182,9 @@ class Userdash extends React.Component {
                     outline
                     type="button"
                   >
-                    <strong> Achievements</strong>
+                    <NavLink to="/Events" className="Events">
+                      <strong> Events</strong>
+                    </NavLink>
                   </Button>
                 </Col>
               </Row>

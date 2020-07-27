@@ -20,6 +20,7 @@ import Userdash from "views/examples/userdash";
 import NDashboard from "components/NDashboard/ndashboard";
 import FinalWorkout from "components/Workout/FinalWorkout";
 import { AppProvider } from "Context/AppContext";
+import Events from "views/examples/Events";
 
 ReactDOM.render(
   <AppProvider>
@@ -69,6 +70,8 @@ ReactDOM.render(
           exact
           render={(props) => <FinalWorkout {...props} />}
         />
+
+        <Route path="/Events" exact render={(props) => <Events {...props} />} />
         <Redirect to="/" />
       </Switch>
       <SimpleFooter />
