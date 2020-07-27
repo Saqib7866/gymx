@@ -23,8 +23,10 @@ import {
 import SimpleFooter from "components/Footers/SimpleFooter.js";
 import axios from "axios";
 import { Redirect } from "react-router";
+import AppContext from "Context/AppContext";
 
 class Login extends React.Component {
+  static contextType = AppContext;
   state = {
     email: "",
     password: "",
@@ -50,8 +52,9 @@ class Login extends React.Component {
         })
         .then((res) => {
           localStorage.setItem(process.env.REACT_APP_TOKEN_NAME, res.data.jwt);
+          console.log(res.data.user);
+          this.context.setUser(res.data.user);
           history.push("/");
-          window.location.reload();
           this.setState({ loading: false });
         })
         .catch((error) => {

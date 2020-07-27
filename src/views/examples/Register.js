@@ -1,7 +1,6 @@
 import React from "react";
 import "./register.css";
 
-// reactstrap components
 import {
   Button,
   Card,
@@ -19,8 +18,11 @@ import {
   Spinner,
 } from "reactstrap";
 import Axios from "axios";
+import { history } from "../../history";
+import AppContext from "Context/AppContext";
 
 class Register extends React.Component {
+  static contextType = AppContext;
   state = {
     name: "",
     email: "",
@@ -60,6 +62,8 @@ class Register extends React.Component {
       })
         .then((res) => {
           localStorage.setItem(process.env.REACT_APP_TOKEN_NAME, res.data.jwt);
+          this.context.setUser(res.data.user);
+          history.push("/");
           this.setState({ loading: false });
         })
         .catch((res) => {

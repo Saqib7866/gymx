@@ -1,30 +1,28 @@
 import React, { Component } from "react";
-import "./Navbarr.css";
+import { NavLink } from "react-router-dom";
+// import "./Navbarr.css";
 import * as ReactBootStrap from "react-bootstrap";
 import {
   Button,
-  UncontrolledCollapse,
   DropdownMenu,
   DropdownItem,
   DropdownToggle,
-  UncontrolledDropdown,
-  Media,
-  NavbarBrand,
-  Navbar,
   NavItem,
-  NavLink,
-  Nav,
-  Container,
-  Row,
-  Col,
-  UncontrolledTooltip,
+  Dropdown,
 } from "reactstrap";
+import AppContext from "Context/AppContext";
+import { history } from "../../history";
 class Navbarr extends Component {
+  static contextType = AppContext;
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = { dropdownOpen: false };
   }
+
+  toggle = () => {
+    this.setState({ dropdownOpen: !this.state.dropdownOpen });
+  };
 
   render() {
     return (
@@ -50,29 +48,32 @@ class Navbarr extends Component {
           <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
             <div className="miniClass2  ">
               <ReactBootStrap.Nav className="toggleClass ">
-                <ReactBootStrap.Nav.Link href="/">
+                <NavLink to="/" className="nav-link">
                   <strong>Home</strong>
-                </ReactBootStrap.Nav.Link>
-                <ReactBootStrap.Nav.Link href="#about">
-                  <strong> About</strong>
-                </ReactBootStrap.Nav.Link>
+                </NavLink>
+
                 <ReactBootStrap.NavDropdown
                   className="portfolio-nav"
                   title="Services"
                   id="collasible-nav-dropdown"
                 >
-                  <ReactBootStrap.NavDropdown.Item href="/BuyProducts">
-                    <strong> Buy Products</strong>
-                  </ReactBootStrap.NavDropdown.Item>
-                  <ReactBootStrap.NavDropdown.Item href="/BookNutrionist">
-                    <strong> Book Nutrionist Appointment</strong>
-                  </ReactBootStrap.NavDropdown.Item>
-                  <ReactBootStrap.NavDropdown.Item href="BMR/BMI">
+                  <NavLink to="/BuyProducts" className="dropdown-item">
+                    <strong>Buy Products</strong>
+                  </NavLink>
+                  <NavLink to="/BookNutrionist" className="dropdown-item">
+                    <strong>Book Nutrionist Appointment</strong>
+                  </NavLink>
+                  <NavLink to="/BMR/BMI" className="dropdown-item">
                     <strong>BMR/BMI</strong>
-                  </ReactBootStrap.NavDropdown.Item>
+                  </NavLink>
                 </ReactBootStrap.NavDropdown>
+
+                <ReactBootStrap.Nav.Link href="#about">
+                  <strong>About</strong>
+                </ReactBootStrap.Nav.Link>
+
                 <ReactBootStrap.Nav.Link href="#ContactUs">
-                  <strong> Contact</strong>
+                  <strong>Contact</strong>
                 </ReactBootStrap.Nav.Link>
               </ReactBootStrap.Nav>
             </div>
@@ -80,24 +81,35 @@ class Navbarr extends Component {
             {localStorage.getItem(process.env.REACT_APP_TOKEN_NAME) !==
               null && (
               <div className="ml-auto mr-3">
-                <ReactBootStrap.NavDropdown
-                  className="portfolio-nav"
-                  title="UserName"
-                  id="collasible-nav-dropdown"
-                >
-                  <ReactBootStrap.NavDropdown.Item>
-                    <strong>Settings</strong>
-                  </ReactBootStrap.NavDropdown.Item>
-                  <ReactBootStrap.NavDropdown.Divider />
-                  <ReactBootStrap.NavDropdown.Item
-                    onClick={() => {
-                      localStorage.removeItem(process.env.REACT_APP_TOKEN_NAME);
-                      window.location.reload();
-                    }}
-                  >
-                    <strong>Logout</strong>
-                  </ReactBootStrap.NavDropdown.Item>
-                </ReactBootStrap.NavDropdown>
+                <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                  <DropdownToggle caret className="p-1 px-3">
+                    <i
+                      className="fa fa-user-circle-o"
+                      style={{ fontSize: 20 }}
+                    />{" "}
+                    {this.context.user.name}
+                  </DropdownToggle>
+                  <DropdownMenu right>
+                    <DropdownItem className="p-1 px-3">
+                      <i class="fa fa-cogs" />
+                      Settings
+                    </DropdownItem>
+                    <DropdownItem divider />
+                    <DropdownItem
+                      className="p-1 px-3"
+                      onClick={() => {
+                        localStorage.removeItem(
+                          process.env.REACT_APP_TOKEN_NAME
+                        );
+                        this.context.setUser({});
+                        history.push("/");
+                      }}
+                    >
+                      <i className="fa fa-sign-out" />
+                      Logout
+                    </DropdownItem>
+                  </DropdownMenu>
+                </Dropdown>
               </div>
             )}
 

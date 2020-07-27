@@ -44,7 +44,7 @@ class Header extends Component {
   handleClickOutside(event) {
     const cartNode = findDOMNode(this.refs.cartPreview);
     const buttonNode = findDOMNode(this.refs.cartButton);
-    if (cartNode.classList.contains("active")) {
+    if (cartNode && cartNode.classList.contains("active")) {
       if (!cartNode || !cartNode.contains(event.target)) {
         this.setState({
           showCart: false,

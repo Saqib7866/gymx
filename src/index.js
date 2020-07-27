@@ -19,57 +19,60 @@ import Main from "components/BMR/Main";
 import Userdash from "views/examples/userdash";
 import NDashboard from "components/NDashboard/ndashboard";
 import FinalWorkout from "components/Workout/FinalWorkout";
+import { AppProvider } from "Context/AppContext";
 
 ReactDOM.render(
-  <BrowserRouter>
-    <Navbarr />
-    <Switch>
-      <Route path="/" exact render={(props) => <Index {...props} />} />
-      <Route path="#about" exact render={(props) => <about {...props} />} />
-      <Route
-        path="#contactUs"
-        exact
-        render={(props) => <ContactUs {...props} />}
-      />
-      <Route
-        path="/BuyProducts"
-        exact
-        render={(props) => <Cart {...props} />}
-      />
-      <Route path="/" exact render={(props) => <Register {...props} />} />
-      <Route
-        path="/BookNutrionist"
-        exact
-        render={(props) => <Nuts {...props} />}
-      />
-      <Route path="/BMR/BMI" exact render={(props) => <Main {...props} />} />
-      <Route path="/Login" exact render={(props) => <Login {...props} />} />
-      <Route
-        path="/Register"
-        exact
-        render={(props) => <Register {...props} />}
-      />
+  <AppProvider>
+    <BrowserRouter>
+      <Navbarr />
+      <Switch>
+        <Route path="/" exact render={(props) => <Index {...props} />} />
+        <Route path="#about" exact render={(props) => <about {...props} />} />
+        <Route
+          path="#contactUs"
+          exact
+          render={(props) => <ContactUs {...props} />}
+        />
+        <Route
+          path="/BuyProducts"
+          exact
+          render={(props) => <Cart {...props} />}
+        />
+        <Route path="/" exact render={(props) => <Register {...props} />} />
+        <Route
+          path="/BookNutrionist"
+          exact
+          render={(props) => <Nuts {...props} />}
+        />
+        <Route path="/BMR/BMI" exact render={(props) => <Main {...props} />} />
+        <Route path="/Login" exact render={(props) => <Login {...props} />} />
+        <Route
+          path="/Register"
+          exact
+          render={(props) => <Register {...props} />}
+        />
 
-      <Route
-        path="/ndash"
-        exact
-        render={(props) => <NDashboard {...props} />}
-      />
-      <Route path="/Main" exact render={(props) => <Main {...props} />} />
-      <Route
-        path="/UserDashboard"
-        exact
-        render={(props) => <Userdash {...props} />}
-      />
-      <Route path="/workout" exact render={(props) => <Main {...props} />} />
-      <Route
-        path="/FinalWorkout"
-        exact
-        render={(props) => <FinalWorkout {...props} />}
-      />
-      <Redirect to="/" />
-    </Switch>
-    <SimpleFooter />
-  </BrowserRouter>,
+        <Route
+          path="/ndash"
+          exact
+          render={(props) => <NDashboard {...props} />}
+        />
+        <Route path="/Main" exact render={(props) => <Main {...props} />} />
+        <Route
+          path="/UserDashboard"
+          exact
+          render={(props) => <Userdash {...props} />}
+        />
+        <Route path="/workout" exact render={(props) => <Main {...props} />} />
+        <Route
+          path="/FinalWorkout"
+          exact
+          render={(props) => <FinalWorkout {...props} />}
+        />
+        <Redirect to="/" />
+      </Switch>
+      <SimpleFooter />
+    </BrowserRouter>
+  </AppProvider>,
   document.getElementById("root")
 );
