@@ -1,17 +1,16 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-// import "./Navbarr.css";
 import * as ReactBootStrap from "react-bootstrap";
 import {
-  Button,
   DropdownMenu,
   DropdownItem,
   DropdownToggle,
-  NavItem,
   Dropdown,
 } from "reactstrap";
 import AppContext from "Context/AppContext";
 import { history } from "../../history";
+import gymxLogo from "../../assets/img/brand/gymx.jpeg";
+
 class Navbarr extends Component {
   static contextType = AppContext;
   constructor(props) {
@@ -36,16 +35,21 @@ class Navbarr extends Component {
           variant="dark"
         >
           <div className="miniClass1">
-            <ReactBootStrap.Navbar.Brand href="/">
-              <h3>
-                <strong className="ml-5" style={{ color: "white" }}>
-                  <b>GYMx</b>
-                </strong>
-              </h3>
-            </ReactBootStrap.Navbar.Brand>
+            <NavLink to="/" className="navbar-brand ml-5">
+              <img
+                src={gymxLogo}
+                class="d-inline-block align-center mb-2"
+                alt="logo"
+              />
+              <span className="h3 text-bold text-white"> GYMX</span>
+            </NavLink>
           </div>
           <ReactBootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
+
+          <ReactBootStrap.Navbar.Collapse
+            id="responsive-navbar-nav"
+            className="mt-5 mt-lg-0"
+          >
             <div className="miniClass2  ">
               <ReactBootStrap.Nav className="toggleClass ">
                 <NavLink to="/" className="nav-link">
@@ -116,38 +120,14 @@ class Navbarr extends Component {
             {localStorage.getItem(process.env.REACT_APP_TOKEN_NAME) ===
               null && (
               <div className="row ml-auto mr-3">
-                <div>
-                  <NavItem className="d-none d-lg-block ml-lg-4">
-                    <Button className="btn-neutral btn-icon" color="default">
-                      <span className="btn-inner--icon">
-                        <i className="fa fa-user-plus mr-2" />
-                      </span>
-                      <span className="nav-link-inner--text ml-1">
-                        <NavLink to="/Register" className="Reister">
-                          Register
-                        </NavLink>
-                      </span>
-                    </Button>
-                  </NavItem>
-                </div>
-                <div>
-                  <NavItem className="d-none d-lg-block ml-lg-4">
-                    <Button
-                      className="btn-neutral btn-icon"
-                      color="default"
-                      href="/Login"
-                    >
-                      <span className="btn-inner--icon">
-                        <i className="fa fa-sign-in mr-2" />
-                      </span>
-                      <span className="nav-link-inner--text ml-1">
-                        <NavLink to="/Login" className="Login">
-                          Login
-                        </NavLink>
-                      </span>
-                    </Button>
-                  </NavItem>
-                </div>
+                <NavLink to="/Register" className="btn btn-neutral mr-2">
+                  <span className="fa fa-user-plus mr-1" />
+                  Register
+                </NavLink>
+                <NavLink to="/Login" className="btn btn-neutral">
+                  <span className="fa fa-sign-in mr-1" />
+                  Login
+                </NavLink>
               </div>
             )}
           </ReactBootStrap.Navbar.Collapse>

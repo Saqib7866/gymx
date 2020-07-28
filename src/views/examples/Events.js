@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import "./Navbarr.css";
 import "assets/vendor/font-awesome/css/font-awesome.min.css";
-import * as ReactBootStrap from "react-bootstrap";
 import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer, toast, Zoom, Bounce } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+import eventImg from "../../assets/img/theme/bghome.jpg";
 
 import {
   Button,
@@ -12,13 +12,12 @@ import {
   CardImg,
   CardTitle,
   CardText,
-  Spinner,
 } from "reactstrap";
 class Events extends Component {
   state = {
     eventName: "Protein",
     eventDescp: "Protein for muscle building",
-    eventImg: "../../assets/img/theme/bghome.jpg",
+    // eventImg: "../../assets/img/theme/bghome.jpg",
   };
   successToast = (name) => {
     toast("🦄 You Have Been Registered In " + name + " Succesfully", {
@@ -34,12 +33,12 @@ class Events extends Component {
   render() {
     return (
       <div>
-        <div>
-          <h2 className="mb-3 mt-3 text-center">
-            <strong>Current Events</strong>
-          </h2>
+        <h2 className="mb-3 mt-3 text-center">
+          <strong>Current Events</strong>
+        </h2>
+        <div className="mx-5 mb-5">
           <Card style={{ width: "18rem" }}>
-            <CardImg variant="top" src={this.state.eventImg} />
+            <CardImg variant="top" src={eventImg} />
             <CardBody>
               <CardTitle>
                 <h4>
@@ -57,8 +56,9 @@ class Events extends Component {
               <Button
                 className="mt-4"
                 color="default"
-                type="submit"
-                onClick={this.successToast(this.state.eventName)}
+                onClick={() => {
+                  this.successToast(this.state.eventName);
+                }}
               >
                 Register Yourself
               </Button>

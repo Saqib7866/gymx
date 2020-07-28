@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import { history } from "../../history";
 
 // reactstrap components
@@ -18,7 +19,6 @@ import {
   Col,
   Alert,
   Spinner,
-  NavLink,
 } from "reactstrap";
 
 import SimpleFooter from "components/Footers/SimpleFooter.js";
