@@ -6,7 +6,7 @@ class Main extends Component {
   state = {};
   render() {
     return (
-      <div className="container">
+      <div style={{ background: "#add8e6" }} className="container">
         <div className="row">
           <div className="col-lg-5">
             <MyBMR />

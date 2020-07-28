@@ -231,7 +231,7 @@ class MyBMR extends Component {
             {this.state.bmr}
           </h6>
         </div>
-        <div className="mt-5 mb-5">
+        <div style={{ background: "#add8e6" }} className="mt-5 mb-5">
           <h4 id="gainOrLoss">
             <strong>Do You Want to Gain Weight or lose Weight?</strong>
           </h4>
@@ -241,7 +241,6 @@ class MyBMR extends Component {
             onClick={this.gainWeight}
             className="btn btn-primary mt-3 mb-3"
           >
-            {" "}
             <strong>Gain</strong>
           </Button>
 
