@@ -72,11 +72,11 @@ class Navbarr extends Component {
                   </NavLink>
                 </ReactBootStrap.NavDropdown>
 
-                <ReactBootStrap.Nav.Link href="#about">
+                <ReactBootStrap.Nav.Link href="/#about">
                   <strong>About</strong>
                 </ReactBootStrap.Nav.Link>
 
-                <ReactBootStrap.Nav.Link href="#ContactUs">
+                <ReactBootStrap.Nav.Link href="/#ContactUs">
                   <strong>Contact</strong>
                 </ReactBootStrap.Nav.Link>
               </ReactBootStrap.Nav>
