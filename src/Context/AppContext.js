@@ -7,14 +7,14 @@ class AppProvider extends Component {
   // Context state
   state = {
     user: {},
-    products: [],
-    cartProducts: [],
+    // products: [],
+    // cartProducts: [],
 
-    cart: {
-      totalBill: 0,
-      shipping: 0,
-      tax: 0,
-    },
+    // cart: {
+    //   totalBill: 0,
+    //   shipping: 0,
+    //   tax: 0,
+    // },
   };
 
   componentDidMount() {
@@ -36,121 +36,121 @@ class AppProvider extends Component {
     this.setState({ user });
   };
 
-  setProducts = (products) => {
-    this.setState({ products });
-  };
+  // setProducts = (products) => {
+  //   this.setState({ products });
+  // };
 
-  getProduct = (id) => {
-    let product = this.state.products.find((p) => {
-      return p.id === id;
-    });
-    return product;
-  };
+  // getProduct = (id) => {
+  //   let product = this.state.products.find((p) => {
+  //     return p.id === id;
+  //   });
+  //   return product;
+  // };
 
-  addCartProduct = (product) => {
-    let { cartProducts } = this.state;
-    cartProducts.push(product);
-    this.setState({ cartProducts: [...this.state.cartProducts, product] });
-  };
+  // addCartProduct = (product) => {
+  //   let { cartProducts } = this.state;
+  //   cartProducts.push(product);
+  //   this.setState({ cartProducts: [...this.state.cartProducts, product] });
+  // };
 
-  setTotalBill = (bill) => {
-    const cart = this.state.cart;
-    cart.totalBill = bill;
-    this.setState({ cart });
-  };
+  // setTotalBill = (bill) => {
+  //   const cart = this.state.cart;
+  //   cart.totalBill = bill;
+  //   this.setState({ cart });
+  // };
 
-  setShipping = (shipping) => {
-    const cart = this.state.cart;
-    cart.shipping = shipping;
-    this.setState({ cart });
-  };
+  // setShipping = (shipping) => {
+  //   const cart = this.state.cart;
+  //   cart.shipping = shipping;
+  //   this.setState({ cart });
+  // };
 
-  setTax = (tax) => {
-    const cart = this.state.cart;
-    cart.tax = tax;
-    this.setState({ cart });
-  };
+  // setTax = (tax) => {
+  //   const cart = this.state.cart;
+  //   cart.tax = tax;
+  //   this.setState({ cart });
+  // };
 
-  calculateTotalBill = () => {
-    let total = 0;
-    this.state.cartProducts.forEach((product) => {
-      total +=
-        this.state.products.find((p) => {
-          return p.id + "" === product.id + "";
-        }).price * product.quantity;
-    });
-    this.setTotalBill(total);
-  };
+  // calculateTotalBill = () => {
+  //   let total = 0;
+  //   this.state.cartProducts.forEach((product) => {
+  //     total +=
+  //       this.state.products.find((p) => {
+  //         return p.id + "" === product.id + "";
+  //       }).price * product.quantity;
+  //   });
+  //   this.setTotalBill(total);
+  // };
 
-  setCartProductQuantity = (id, quantity) => {
-    if (quantity !== null) {
-      this.state.cartProducts.forEach((product) => {
-        if (product.id === id) {
-          product.quantity = quantity;
-        }
-      });
-    }
-  };
+  // setCartProductQuantity = (id, quantity) => {
+  //   if (quantity !== null) {
+  //     this.state.cartProducts.forEach((product) => {
+  //       if (product.id === id) {
+  //         product.quantity = quantity;
+  //       }
+  //     });
+  //   }
+  // };
 
-  removeProductFromCart = (id) => {
-    let products = this.state.cartProducts;
+  // removeProductFromCart = (id) => {
+  //   let products = this.state.cartProducts;
 
-    products = products.filter((p) => p.id !== id);
-    console.log(products);
+  //   products = products.filter((p) => p.id !== id);
+  //   console.log(products);
 
-    this.setState({ cartProducts: products });
-    this.calculateTotalBill();
-  };
+  //   this.setState({ cartProducts: products });
+  //   this.calculateTotalBill();
+  // };
 
-  updateProductQuantity = (id, quantity) => {
-    const products = this.state.cartProducts;
-    var index = products
-      .map(function (item) {
-        return item.id;
-      })
-      .indexOf(id);
+  // updateProductQuantity = (id, quantity) => {
+  //   const products = this.state.cartProducts;
+  //   var index = products
+  //     .map(function (item) {
+  //       return item.id;
+  //     })
+  //     .indexOf(id);
 
-    products[index].quantity = quantity;
+  //   products[index].quantity = quantity;
 
-    this.setState({ cartProducts: products });
-  };
+  //   this.setState({ cartProducts: products });
+  // };
 
   render() {
     const { children } = this.props;
 
     const { user } = this.state;
-    const { products } = this.state;
-    const { cartProducts } = this.state;
-    const { cart } = this.state;
+    // const { products } = this.state;
+    // const { cartProducts } = this.state;
+    // const { cart } = this.state;
 
-    const { setProducts } = this;
-    const { addCartProduct } = this;
-    const { setTotalBill } = this;
-    const { setShipping } = this;
-    const { setTax } = this;
-    const { calculateTotalBill } = this;
-    const { setCartProductQuantity } = this;
-    const { removeProductFromCart } = this;
-    const { updateProductQuantity } = this;
+    // const { setProducts } = this;
+    // const { addCartProduct } = this;
+    // const { setTotalBill } = this;
+    // const { setShipping } = this;
+    // const { setTax } = this;
+    // const { calculateTotalBill } = this;
+    // const { setCartProductQuantity } = this;
+    // const { removeProductFromCart } = this;
+    // const { updateProductQuantity } = this;
     const { setUser } = this;
 
     return (
       <AppContext.Provider
         value={{
           user,
-          products,
-          cartProducts,
-          cart,
+          // products,
+          // cartProducts,
+          // cart,
           setUser,
-          setProducts,
-          addCartProduct,
-          setTotalBill,
-          setShipping,
-          setTax,
-          calculateTotalBill,
-          setCartProductQuantity,
-          removeProductFromCart,
-          updateProductQuantity,
+          // setProducts,
+          // addCartProduct,
+          // setTotalBill,
+          // setShipping,
+          // setTax,
+          // calculateTotalBill,
+          // setCartProductQuantity,
+          // removeProductFromCart,
+          // updateProductQuantity,
         }}
       >
         {children}

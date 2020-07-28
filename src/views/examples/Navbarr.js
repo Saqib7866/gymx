@@ -38,7 +38,7 @@ class Navbarr extends Component {
             <NavLink to="/" className="navbar-brand ml-5">
               <img
                 src={gymxLogo}
-                class="d-inline-block align-center mb-2"
+                className="d-inline-block align-center mb-2"
                 alt="logo"
               />
               <span className="h3 text-bold text-white"> GYMX</span>

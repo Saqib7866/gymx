@@ -5,22 +5,19 @@ import NoResults from "../empty-states/NoResults";
 import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
 
 class Products extends Component {
-  constructor() {
-    super();
-  }
   render() {
     let productsData;
     let term = this.props.searchTerm;
-    let x;
+    // let x;
 
     function searchingFor(term) {
-      return function(x) {
+      return function (x) {
         return x.name.toLowerCase().includes(term.toLowerCase()) || !term;
       };
     }
     productsData = this.props.productsList
       .filter(searchingFor(term))
-      .map(product => {
+      .map((product) => {
         return (
           <Product
             key={product.id}

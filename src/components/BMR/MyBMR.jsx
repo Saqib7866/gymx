@@ -3,21 +3,7 @@ import React, { Component } from "react";
 import LoseWeight from "./LoseWeight";
 import DietTable from "./DietTable";
 import "./bmr.css";
-import {
-  Badge,
-  Button,
-  Card,
-  CardBody,
-  CardImg,
-  FormGroup,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
-  Container,
-  Row,
-  Col,
-} from "reactstrap";
+import { Button, Input } from "reactstrap";
 class MyBMR extends Component {
   state = {
     bmr: 0,
