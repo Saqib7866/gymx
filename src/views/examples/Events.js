@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./Navbarr.css";
 import "assets/vendor/font-awesome/css/font-awesome.min.css";
-import * as ReactBootStrap from "react-bootstrap";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast, Zoom, Bounce } from "react-toastify";
 
