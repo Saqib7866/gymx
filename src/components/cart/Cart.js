@@ -6,8 +6,10 @@ import Products from "./components/Products";
 
 import QuickView from "./components/QuickView";
 import "./scss/style.scss";
+import AppContext from "Context/AppContext";
 
 class Cart extends Component {
+  static contextType = AppContext;
   constructor() {
     super();
     this.state = {
