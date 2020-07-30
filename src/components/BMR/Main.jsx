@@ -6,9 +6,9 @@ class Main extends Component {
   state = {};
   render() {
     return (
-      <div className="container">
+      <div className="container mt-7">
         <div className="row">
-          <div className="col-lg-5">
+          <div className="col-lg-6">
             <MyBMR />
           </div>
 

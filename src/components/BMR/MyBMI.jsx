@@ -1,20 +1,6 @@
 import React, { Component } from "react";
 import "./bmr.css";
-import {
-  Badge,
-  Button,
-  Card,
-  CardBody,
-  CardImg,
-  FormGroup,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
-  Container,
-  Row,
-  Col,
-} from "reactstrap";
+import { Button, Input, FormGroup, Label, Row, Col } from "reactstrap";
 class MyBMI extends Component {
   state = {
     bmi: 0,
@@ -47,63 +33,47 @@ class MyBMI extends Component {
   };
   render() {
     return (
-      <div className="container mt-7">
-        <div className=" Box myBox">
-          <div className=" container boxMragin ">
-            <h3 style={{ margin: "3px" }}>
-              <strong>My BMI</strong>
-            </h3>
-            <h4>
-              <strong style={{ margin: "3px" }}>
-                Enter info to find your BMI
-              </strong>
-            </h4>
-            <h5>
-              <strong style={{ margin: "3px" }}>Weight:</strong>
-              <Input
-                style={{ width: "250px" }}
-                className="ml-3"
-                id="weightBmi"
-                value={this.state.title}
-                size="10"
-              ></Input>
-            </h5>
-            <h5>
-              <strong style={{ margin: "3px" }}>Height:</strong>
-              <br></br>
-              <strong style={{ margin: "3px" }}> Ft:</strong>
-              <Input
-                style={{ width: "250px" }}
-                className="space ml-3 mr-3"
-                id="heightFtBmi"
-                value={this.state.title}
-                size="2"
-              />
-              <strong style={{ margin: "3px" }}>in:</strong>
-              <Input
-                style={{ width: "250px" }}
-                className="space ml-3"
-                id="heightInBmi"
-                value={this.state.title}
-                size="2"
-              />
-            </h5>
-            <Button
-              color="success"
-              style={{ margin: "9px", fontsize: "20", marginLeft: "13px" }}
-              onClick={this.calculateBmi}
-              className="btn btn-primary"
-            >
-              <strong> Calculate</strong>
-            </Button>
-            <h6 style={{ margin: "9px" }}>
-              <strong>
-                Your BMI is {this.state.bmi} and body your body type is{" "}
-                {this.state.bodytype}
-              </strong>
-            </h6>
+      <div className="card shadow container font-weight-bold">
+        <h3>My BMI</h3>
+        <h4>Enter info to find your BMI</h4>
+
+        <FormGroup>
+          <Label for="weightBmi">Weight</Label>
+          <Input id="weightBmi" value={this.state.title} />
+        </FormGroup>
+
+        <Row>
+          <Col>
+            <FormGroup>
+              <Label for="heightFtBmi">Height feet</Label>
+              <Input id="heightFtBmi" value={this.state.title} />
+            </FormGroup>
+          </Col>
+
+          <Col>
+            <FormGroup>
+              <Label for="heightInBmi">Height inches</Label>
+              <Input id="heightInBmi" value={this.state.title} />
+            </FormGroup>
+          </Col>
+        </Row>
+
+        <Button
+          color="success"
+          onClick={this.calculateBmi}
+          className="btn btn-primary mb-3"
+        >
+          <strong> Calculate</strong>
+        </Button>
+
+        {this.state.bmi > 0 && (
+          <div className="h5">
+            Your Bmi is{" "}
+            <span className="font-weight-bold">{this.state.bmi}</span> and body
+            type is{" "}
+            <span className="font-weight-bold">{this.state.bodytype}</span>
           </div>
-        </div>
+        )}
       </div>
     );
   }
