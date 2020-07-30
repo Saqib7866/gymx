@@ -155,28 +155,28 @@ class MyBMR extends Component {
 
           <FormGroup>
             <Label for="weight">Weight</Label>
-            <Input id="weight" value={this.state.title} />
+            <Input type="number" id="weight" value={this.state.title} />
           </FormGroup>
 
           <Row>
             <Col>
               <FormGroup>
                 <Label for="heightFt">Height feet</Label>
-                <Input id="heightFt" value={this.state.title} />
+                <Input type="number" id="heightFt" value={this.state.title} />
               </FormGroup>
             </Col>
 
             <Col>
               <FormGroup>
                 <Label for="heightIn">Height inches</Label>
-                <Input id="heightIn" value={this.state.title} />
+                <Input type="number" id="heightIn" value={this.state.title} />
               </FormGroup>
             </Col>
           </Row>
 
           <FormGroup>
             <Label for="age">Age</Label>
-            <Input id="age" value={this.state.title} />
+            <Input type="number" id="age" value={this.state.title} />
           </FormGroup>
 
           <Button

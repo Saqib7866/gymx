@@ -39,21 +39,21 @@ class MyBMI extends Component {
 
         <FormGroup>
           <Label for="weightBmi">Weight</Label>
-          <Input id="weightBmi" value={this.state.title} />
+          <Input type="number" id="weightBmi" value={this.state.title} />
         </FormGroup>
 
         <Row>
           <Col>
             <FormGroup>
               <Label for="heightFtBmi">Height feet</Label>
-              <Input id="heightFtBmi" value={this.state.title} />
+              <Input type="number" id="heightFtBmi" value={this.state.title} />
             </FormGroup>
           </Col>
 
           <Col>
             <FormGroup>
               <Label for="heightInBmi">Height inches</Label>
-              <Input id="heightInBmi" value={this.state.title} />
+              <Input type="number" id="heightInBmi" value={this.state.title} />
             </FormGroup>
           </Col>
         </Row>
