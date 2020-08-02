@@ -22,6 +22,7 @@ import FinalWorkout from "components/Workout/FinalWorkout";
 import { AppProvider } from "Context/AppContext";
 import Events from "views/examples/Events";
 import AccountSettings from "components/AccountSettings/AccountSettings";
+import HNuts from "views/examples/HiredNutrionist";
 
 ReactDOM.render(
   <AppProvider>
@@ -71,8 +72,25 @@ ReactDOM.render(
           exact
           render={(props) => <FinalWorkout {...props} />}
         />
-
+        <Route
+          path="/DietPlan"
+          exact
+          render={(props) => <Events {...props} />}
+        />
+        <Route
+          path="/ProgressRecord"
+          exact
+          render={(props) => <Events {...props} />}
+        />
+        <Route
+          path="/Workout"
+          exact
+          render={(props) => <FinalWorkout {...props} />}
+        />
+        <Route path="/MyBMR" exact render={(props) => <Main {...props} />} />
         <Route path="/Events" exact render={(props) => <Events {...props} />} />
+
+        <Route path="/HNuts" exact render={(props) => <HNuts {...props} />} />
 
         <Route path="/diet-plan" component={DietPlan} />
 
