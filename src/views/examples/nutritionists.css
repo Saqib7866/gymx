@@ -1,8 +1,7 @@
 .back1 {
   background-image: url(../../assets/img/theme/a3.jpg);
   background-repeat: no-repeat;
-  background-size: cover;
-  padding-bottom: 150px;
+  background-size: 100% 100%;
 }
 .nutritionist-bg {
   background-image: url(../../assets/img/theme/nutrionist.jpg);
