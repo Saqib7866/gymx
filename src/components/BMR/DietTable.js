@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Table } from "reactstrap";
-import "./bmr.css";
 export default class DietTable extends Component {
   constructor(props) {
     super(props);
