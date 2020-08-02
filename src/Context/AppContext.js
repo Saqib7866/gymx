@@ -4,17 +4,14 @@ import Axios from "axios";
 const AppContext = React.createContext();
 
 class AppProvider extends Component {
-  // Context state
   state = {
     user: {},
-    // products: [],
-    // cartProducts: [],
-
-    // cart: {
-    //   totalBill: 0,
-    //   shipping: 0,
-    //   tax: 0,
-    // },
+    dietTable: {
+      rice: 0,
+      chicken: 0,
+      olive: 0,
+      egg: 0,
+    },
   };
 
   componentDidMount() {
@@ -36,121 +33,54 @@ class AppProvider extends Component {
     this.setState({ user });
   };
 
-  // setProducts = (products) => {
-  //   this.setState({ products });
-  // };
+  // Diet table values
+  setRice = (rice) => {
+    let { dietTable } = this.state;
+    dietTable.rice = rice;
+    this.setState({ dietTable });
+  };
 
-  // getProduct = (id) => {
-  //   let product = this.state.products.find((p) => {
-  //     return p.id === id;
-  //   });
-  //   return product;
-  // };
+  setChicken = (chicken) => {
+    let { dietTable } = this.state;
+    dietTable.chicken = chicken;
+    this.setState({ dietTable });
+  };
 
-  // addCartProduct = (product) => {
-  //   let { cartProducts } = this.state;
-  //   cartProducts.push(product);
-  //   this.setState({ cartProducts: [...this.state.cartProducts, product] });
-  // };
+  setOlive = (olive) => {
+    let { dietTable } = this.state;
+    dietTable.olive = olive;
+    this.setState({ dietTable });
+  };
 
-  // setTotalBill = (bill) => {
-  //   const cart = this.state.cart;
-  //   cart.totalBill = bill;
-  //   this.setState({ cart });
-  // };
-
-  // setShipping = (shipping) => {
-  //   const cart = this.state.cart;
-  //   cart.shipping = shipping;
-  //   this.setState({ cart });
-  // };
-
-  // setTax = (tax) => {
-  //   const cart = this.state.cart;
-  //   cart.tax = tax;
-  //   this.setState({ cart });
-  // };
-
-  // calculateTotalBill = () => {
-  //   let total = 0;
-  //   this.state.cartProducts.forEach((product) => {
-  //     total +=
-  //       this.state.products.find((p) => {
-  //         return p.id + "" === product.id + "";
-  //       }).price * product.quantity;
-  //   });
-  //   this.setTotalBill(total);
-  // };
-
-  // setCartProductQuantity = (id, quantity) => {
-  //   if (quantity !== null) {
-  //     this.state.cartProducts.forEach((product) => {
-  //       if (product.id === id) {
-  //         product.quantity = quantity;
-  //       }
-  //     });
-  //   }
-  // };
-
-  // removeProductFromCart = (id) => {
-  //   let products = this.state.cartProducts;
-
-  //   products = products.filter((p) => p.id !== id);
-  //   console.log(products);
-
-  //   this.setState({ cartProducts: products });
-  //   this.calculateTotalBill();
-  // };
-
-  // updateProductQuantity = (id, quantity) => {
-  //   const products = this.state.cartProducts;
-  //   var index = products
-  //     .map(function (item) {
-  //       return item.id;
-  //     })
-  //     .indexOf(id);
-
-  //   products[index].quantity = quantity;
-
-  //   this.setState({ cartProducts: products });
-  // };
+  setEgg = (egg) => {
+    let { dietTable } = this.state;
+    dietTable.egg = egg;
+    this.setState({ dietTable });
+  };
 
   render() {
     const { children } = this.props;
 
     const { user } = this.state;
-    // const { products } = this.state;
-    // const { cartProducts } = this.state;
-    // const { cart } = this.state;
+    const { dietTable } = this.state;
 
-    // const { setProducts } = this;
-    // const { addCartProduct } = this;
-    // const { setTotalBill } = this;
-    // const { setShipping } = this;
-    // const { setTax } = this;
-    // const { calculateTotalBill } = this;
-    // const { setCartProductQuantity } = this;
-    // const { removeProductFromCart } = this;
-    // const { updateProductQuantity } = this;
     const { setUser } = this;
+    const { setRice } = this;
+    const { setChicken } = this;
+    const { setOlive } = this;
+    const { setEgg } = this;
 
     return (
       <AppContext.Provider
         value={{
           user,
-          // products,
-          // cartProducts,
-          // cart,
+          dietTable,
+
           setUser,
-          // setProducts,
-          // addCartProduct,
-          // setTotalBill,
-          // setShipping,
-          // setTax,
-          // calculateTotalBill,
-          // setCartProductQuantity,
-          // removeProductFromCart,
-          // updateProductQuantity,
+          setRice,
+          setChicken,
+          setOlive,
+          setEgg,
         }}
       >
         {children}

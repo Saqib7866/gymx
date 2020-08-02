@@ -7,12 +7,22 @@ class LoseWeight extends Component {
   }
   render() {
     return (
-      <h6>
-        <strong>
-          Your Have to get to {this.props.lose} calories in order to loose
-          weight
-        </strong>
-      </h6>
+      <div className="h6">
+        {this.props.lose && (
+          <span>
+            Your Have to get to{" "}
+            <span className="font-weight-bold">{this.props.lose}</span> calories
+            in order to lose weight
+          </span>
+        )}
+        {this.props.gain && (
+          <span>
+            Your Have to get to{" "}
+            <span className="font-weight-bold">{this.props.gain}</span> calories
+            in order to gain weight
+          </span>
+        )}
+      </div>
     );
   }
 }

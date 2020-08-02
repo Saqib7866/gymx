@@ -72,6 +72,8 @@ ReactDOM.render(
         />
 
         <Route path="/Events" exact render={(props) => <Events {...props} />} />
+
+        <Route path="/diet-plan" component={DietPlan} />
         <Redirect to="/" />
       </Switch>
       <SimpleFooter />

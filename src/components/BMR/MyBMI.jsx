@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "./bmr.css";
 import { Button, Input, FormGroup, Label, Row, Col } from "reactstrap";
+
 class MyBMI extends Component {
   state = {
     bmi: 0,

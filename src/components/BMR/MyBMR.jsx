@@ -2,9 +2,11 @@ import React, { Component } from "react";
 
 import LoseWeight from "./LoseWeight";
 import DietTable from "./DietTable";
-import "./bmr.css";
 import { Button, Input, FormGroup, Label, Row, Col } from "reactstrap";
+import AppContext from "Context/AppContext";
+
 class MyBMR extends Component {
+  static contextType = AppContext;
   state = {
     bmr: 0,
     lose: 0,
@@ -86,6 +88,11 @@ class MyBMR extends Component {
       var riceValue = Math.round((carbsValue / 32) * 100);
       var eggValue = Math.round(EggProtien / 4);
       if (gainValue > 0) {
+        this.context.setRice(riceValue);
+        this.context.setChicken(chickenValue);
+        this.context.setOlive(oliveValue);
+        this.context.setEgg(eggValue);
+
         this.setState({
           fats: fatsValue,
           carbs: carbsValue,
@@ -99,8 +106,6 @@ class MyBMR extends Component {
         });
       }
     }
-
-    console.log(this.state.lose);
   };
   gainWeight = () => {
     const { opened1 } = this.state;
@@ -119,6 +124,11 @@ class MyBMR extends Component {
       var riceValue = Math.round((carbsValue / 32) * 100);
       var eggValue = Math.round(EggProtien / 4);
       if (gainValue > 0) {
+        this.context.setRice(riceValue);
+        this.context.setChicken(chickenValue);
+        this.context.setOlive(oliveValue);
+        this.context.setEgg(eggValue);
+
         this.setState({
           fats: fatsValue,
           carbs: carbsValue,
@@ -199,39 +209,34 @@ class MyBMR extends Component {
         <div className="mt-5 mb-5">
           <h4 id="gainOrLoss">Do You Want to Gain Weight or lose Weight?</h4>
 
-          <Button
-            color="success"
-            onClick={this.gainWeight}
-            className="btn btn-primary mt-3 mb-3"
-          >
-            {" "}
-            <strong>Gain</strong>
+          <Button color="info" onClick={this.gainWeight} className="mt-3 mb-3">
+            Gain
           </Button>
 
           <Button
             color="success"
             onClick={this.loseWeight}
-            className="btn btn-primary mt-3 mb-3"
+            className="mt-3 mb-3"
           >
-            <strong>Lose</strong>
+            Lose
           </Button>
           {opened && (
-            <div className="boxContent">
-              {<LoseWeight lose={this.state.lose} />}{" "}
+            <div className="text-center pt-1 border border-success rounded text-capitalize mb-1">
+              {<LoseWeight lose={this.state.lose} />}
             </div>
           )}
 
           {opened1 && (
-            <div className="boxContent">
-              {<LoseWeight lose={this.state.gain} />}{" "}
+            <div className="text-center pt-1 border border-info rounded text-capitalize mb-1">
+              {<LoseWeight gain={this.state.gain} />}
             </div>
           )}
 
           <DietTable
-            rice={this.state.rice}
-            chicken={this.state.chicken}
-            olive={this.state.olive}
-            egg={this.state.egg}
+            rice={this.context.dietTable.rice}
+            chicken={this.context.dietTable.chicken}
+            olive={this.context.dietTable.olive}
+            egg={this.context.dietTable.egg}
           />
         </div>
       </div>
