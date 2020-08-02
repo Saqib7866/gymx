@@ -21,6 +21,7 @@ import NDashboard from "components/NDashboard/ndashboard";
 import FinalWorkout from "components/Workout/FinalWorkout";
 import { AppProvider } from "Context/AppContext";
 import Events from "views/examples/Events";
+import AccountSettings from "components/AccountSettings/AccountSettings";
 
 ReactDOM.render(
   <AppProvider>
@@ -74,6 +75,8 @@ ReactDOM.render(
         <Route path="/Events" exact render={(props) => <Events {...props} />} />
 
         <Route path="/diet-plan" component={DietPlan} />
+
+        <Route path="/account-settings" component={AccountSettings} />
         <Redirect to="/" />
       </Switch>
       <SimpleFooter />

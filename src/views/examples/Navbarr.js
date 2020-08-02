@@ -98,10 +98,12 @@ class Navbarr extends Component {
                     {this.context.user.name}
                   </DropdownToggle>
                   <DropdownMenu right>
-                    <DropdownItem className="p-1 px-3">
-                      <i class="fa fa-cogs" />
-                      Settings
-                    </DropdownItem>
+                    <NavLink to="/account-settings">
+                      <DropdownItem className="p-1 px-3">
+                        <i className="fa fa-cogs" />
+                        Settings
+                      </DropdownItem>
+                    </NavLink>
                     <DropdownItem divider />
                     <DropdownItem
                       className="p-1 px-3"
