@@ -1,9 +1,10 @@
 import React from "react";
 // nodejs library that concatenates classes
-import classnames from "classnames";
+
+import { NavLink } from "react-router-dom";
 import "./userdash.css";
 // reactstrap components
-import { Button, FormGroup, Input, Row, Col, NavLink } from "reactstrap";
+import { Button, FormGroup, Input, Row, Col } from "reactstrap";
 
 class Userdash extends React.Component {
   state = {
@@ -18,7 +19,7 @@ class Userdash extends React.Component {
   render() {
     return (
       <>
-        <div className="back21">
+        <div className="back21 ">
           <div className="section">
             <div className="">
               <Button
@@ -114,7 +115,9 @@ class Userdash extends React.Component {
                     outline
                     type="button"
                   >
-                    <strong>Diet</strong>
+                    <NavLink to="/DietPlan" className="DietPlan">
+                      <strong style={{ color: " white" }}>Diet Plan</strong>
+                    </NavLink>
                   </Button>
                 </Col>
 
@@ -129,7 +132,12 @@ class Userdash extends React.Component {
                     outline
                     type="button"
                   >
-                    <strong> Progress Record</strong>
+                    <NavLink to="/ProgressRecord" className="ProgressRecord">
+                      <strong style={{ color: " white" }}>
+                        {" "}
+                        Progress Record
+                      </strong>
+                    </NavLink>
                   </Button>
                 </Col>
               </Row>
@@ -145,9 +153,10 @@ class Userdash extends React.Component {
                     color="warning"
                     outline
                     type="button"
-                    href="/FinalWorkout"
                   >
-                    <strong>Workout</strong>
+                    <NavLink to="/Workout" className="Workout">
+                      <strong style={{ color: " white" }}>Workout</strong>
+                    </NavLink>
                   </Button>
                 </Col>
 
@@ -161,17 +170,15 @@ class Userdash extends React.Component {
                     color="warning  "
                     outline
                     type="button"
-                    href="/Main"
                   >
-                    <strong>BMR</strong>
+                    <NavLink to="/MyBMR" className="BMR">
+                      <strong style={{ color: " white" }}>My BMR</strong>
+                    </NavLink>
                   </Button>
                 </Col>
               </Row>
               <Row>
-                <Col
-                  style={{ textAlign: "center", marginLeft: "-15px" }}
-                  md="12"
-                >
+                <Col sm="6">
                   <Button
                     style={{
                       height: "100px",
@@ -183,7 +190,25 @@ class Userdash extends React.Component {
                     type="button"
                   >
                     <NavLink to="/Events" className="Events">
-                      <strong> Events</strong>
+                      <strong style={{ color: " white" }}> Events</strong>
+                    </NavLink>
+                  </Button>
+                </Col>
+                <Col sm="6">
+                  <Button
+                    style={{
+                      height: "100px",
+                      width: "300px",
+                      marginTop: "15px",
+                    }}
+                    color="info"
+                    outline
+                    type="button"
+                  >
+                    <NavLink to="/HNuts" className="HNuts">
+                      <strong style={{ color: " white" }}>
+                        s Hired Nutritionist
+                      </strong>
                     </NavLink>
                   </Button>
                 </Col>

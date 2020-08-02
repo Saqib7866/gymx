@@ -33,49 +33,6 @@ class Nuts extends React.Component {
   render() {
     return (
       <>
-        <div className="search  ">
-          <a
-            className="mobile-search"
-            href="#"
-            // onClick={this.handleMobileSearch.bind(this)}
-          >
-            <img
-              src="https://res.cloudinary.com/sivadass/image/upload/v1494756966/icons/search-green.png"
-              alt="search"
-            />
-          </a>
-          <form
-            action="#"
-            method="get"
-            className={
-              this.state.mobileSearch ? "search-form active" : "search-form"
-            }
-          >
-            <a
-              className="back-button"
-              href="#"
-              // onClick={this.handleSearchNav.bind(this)}
-            >
-              <img
-                src="https://res.cloudinary.com/sivadass/image/upload/v1494756030/icons/back.png"
-                alt="back"
-              />
-            </a>
-            <input
-              type="search"
-              ref="searchBox"
-              placeholder="Search for The Products"
-              className="search-keyword"
-              // onChange={this.props.handleSearch}
-            />
-            <button
-              className="search-button"
-              type="submit"
-              // onClick={this.handleSubmit.bind(this)}
-            />
-          </form>
-        </div>
-
         <main className="back1" ref="main">
           <section className="container">
             <Container>
