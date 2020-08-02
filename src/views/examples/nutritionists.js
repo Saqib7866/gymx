@@ -7,119 +7,104 @@ import {
   Button,
   Card,
   CardBody,
-  CardImg,
-  FormGroup,
   Input,
   InputGroupAddon,
-  InputGroupText,
   InputGroup,
   Container,
   Row,
   Col,
+  Label,
 } from "reactstrap";
 
 class Nuts extends React.Component {
   state = {
-    name: "Asad",
-    achievments: "Nil",
-    fee: "200",
-    tel: "030000",
+    search: "",
+    nutritionists: [
+      {
+        name: "Asad",
+        achievments: ["abc", "def", "ghi"],
+        fee: "200",
+        tel: "030000",
+      },
+    ],
   };
   componentDidMount() {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
-    this.refs.main.scrollTop = 0;
+    // this.refs.main.scrollTop = 0;
   }
   render() {
     return (
-      <>
-        <div className="search  ">
-          <a
-            className="mobile-search"
-            href="#"
-            // onClick={this.handleMobileSearch.bind(this)}
-          >
-            <img
-              src="https://res.cloudinary.com/sivadass/image/upload/v1494756966/icons/search-green.png"
-              alt="search"
-            />
-          </a>
-          <form
-            action="#"
-            method="get"
-            className={
-              this.state.mobileSearch ? "search-form active" : "search-form"
-            }
-          >
-            <a
-              className="back-button"
-              href="#"
-              // onClick={this.handleSearchNav.bind(this)}
-            >
-              <img
-                src="https://res.cloudinary.com/sivadass/image/upload/v1494756030/icons/back.png"
-                alt="back"
-              />
-            </a>
-            <input
-              type="search"
-              ref="searchBox"
-              placeholder="Search for The Products"
-              className="search-keyword"
-              // onChange={this.props.handleSearch}
-            />
-            <button
-              className="search-button"
-              type="submit"
-              // onClick={this.handleSubmit.bind(this)}
-            />
-          </form>
+      <div>
+        <div className="back1">
+          <div className="d-flex justify-content-center m-5 navbar sticky-top">
+            <div className="mt-5 w-50">
+              <InputGroup>
+                <Input
+                  placeholder="Search"
+                  value={this.state.search}
+                  onChange={(e) => {
+                    this.setState({ search: e.target.value });
+                  }}
+                />
+                <InputGroupAddon addonType="append">
+                  <Button color="dark" style={{ height: "100%" }}>
+                    <span className="fa fa-search" />
+                  </Button>
+                </InputGroupAddon>
+              </InputGroup>
+            </div>
+          </div>
+          <Container fluid className="mt-5 px-7">
+            <Row>
+              {this.state.nutritionists.map((nutritionist) => {
+                return (
+                  <Col lg="3" md="6" className="my-3">
+                    <Card className="card-lift--hover shadow border-0">
+                      <CardBody className="py-5">
+                        <div className="icon icon-shape icon-shape-primary rounded-circle mb-4">
+                          <i className="ni ni-check-bold" />
+                        </div>
+                        <h6 className="text-primary text-uppercase">
+                          {nutritionist.name}
+                        </h6>
+                        <span className="description mt-3">
+                          {nutritionist.achievments.map((a) => {
+                            return (
+                              <Badge color="primary" pill className="mr-1">
+                                {a}
+                              </Badge>
+                            );
+                          })}
+                        </span>
+                        <Row className="mt-3">
+                          <Col sm="4">
+                            <Label>Contact No.</Label>
+                          </Col>
+                          <Col sm="8">
+                            <Label>{nutritionist.tel}</Label>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col sm="4">
+                            <Label>Charges</Label>
+                          </Col>
+                          <Col sm="8">
+                            <Label>{nutritionist.fee}</Label>
+                          </Col>
+                        </Row>
+                        <Button className="mt-4" color="primary" block>
+                          Book & Appointment
+                        </Button>
+                      </CardBody>
+                    </Card>
+                  </Col>
+                );
+              })}
+            </Row>
+          </Container>
         </div>
-
-        <main className="back1" ref="main">
-          <section className="container">
-            <Container>
-              <Row className="justify-content-center">
-                <Col lg="12">
-                  <Row className="row-grid">
-                    <Col lg="4">
-                      <Card className="card-lift--hover shadow border-0">
-                        <CardBody className="py-5">
-                          <div className="icon icon-shape icon-shape-primary rounded-circle mb-4">
-                            <i className="ni ni-check-bold" />
-                          </div>
-                          <h6 className="text-primary text-uppercase">
-                            {this.state.name}
-                          </h6>
-                          <p className="description mt-3">
-                            {this.state.achievments}
-                          </p>
-                          <div>
-                            <Badge color="primary" pill className="mr-1">
-                              ${this.state.fee}
-                            </Badge>
-                            <Badge color="primary" pill className="mr-1">
-                              {this.state.tel}
-                            </Badge>
-                          </div>
-                          <Button
-                            onClick="showAlert()"
-                            className="mt-4"
-                            color="primary"
-                            href=""
-                          >
-                            Book & Appointment
-                          </Button>
-                        </CardBody>
-                      </Card>
-                    </Col>
-                  </Row>
-                </Col>
-              </Row>
-            </Container>
-          </section>
-        </main>
-      </>
+      </div>
     );
   }
 }
