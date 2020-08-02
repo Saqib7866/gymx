@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import axios from "axios";
 import Header from "./components/Header";
 import Products from "./components/Products";
@@ -38,9 +37,7 @@ class Cart extends Component {
   }
   // Fetch Initial Set of Products from external API
   getProducts() {
-    let url =
-      "https://res.cloudinary.com/sivadass/raw/upload/v1535817394/json/products.json";
-    axios.get(url).then((response) => {
+    axios.get(process.env.REACT_APP_API_URL + "/products").then((response) => {
       this.setState({
         products: response.data,
       });
@@ -61,7 +58,7 @@ class Cart extends Component {
   // Filter by Category
   handleCategory(event) {
     this.setState({ category: event.target.value });
-    console.log(this.state.category);
+    // console.log(this.state.category);
   }
   // Add to Cart
   handleAddToCart(selectedProducts) {
@@ -69,7 +66,7 @@ class Cart extends Component {
     let productID = selectedProducts.id;
     let productQty = selectedProducts.quantity;
     if (this.checkProduct(productID)) {
-      console.log("hi");
+      // console.log("hi");
       let index = cartItem.findIndex((x) => x.id == productID);
       cartItem[index].quantity =
         Number(cartItem[index].quantity) + Number(productQty);
@@ -89,8 +86,8 @@ class Cart extends Component {
           cartBounce: false,
           quantity: 1,
         });
-        console.log(this.state.quantity);
-        console.log(this.state.cart);
+        // console.log(this.state.quantity);
+        // console.log(this.state.cart);
       }.bind(this),
       1000
     );
@@ -135,7 +132,7 @@ class Cart extends Component {
 
   //Reset Quantity
   updateQuantity(qty) {
-    console.log("quantity added...");
+    // console.log("quantity added...");
     this.setState({
       quantity: qty,
     });
@@ -170,14 +167,16 @@ class Cart extends Component {
           updateQuantity={this.updateQuantity}
           productQuantity={this.state.moq}
         />
-        <Products
-          productsList={this.state.products}
-          searchTerm={this.state.term}
-          addToCart={this.handleAddToCart}
-          productQuantity={this.state.quantity}
-          updateQuantity={this.updateQuantity}
-          openModal={this.openModal}
-        />
+        <div className="mt-5">
+          <Products
+            productsList={this.state.products}
+            searchTerm={this.state.term}
+            addToCart={this.handleAddToCart}
+            productQuantity={this.state.quantity}
+            updateQuantity={this.updateQuantity}
+            openModal={this.openModal}
+          />
+        </div>
         <QuickView
           product={this.state.quickViewProduct}
           openModal={this.state.modalActive}

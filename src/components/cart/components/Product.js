@@ -64,7 +64,7 @@ class Product extends Component {
       <div className="product">
         <div className="product-image">
           <img
-            src={image}
+            src={process.env.REACT_APP_API_URL + image.url}
             alt={this.props.name}
             onClick={this.quickView.bind(
               this,

@@ -2,23 +2,11 @@ import React, { Component } from "react";
 
 import LoseWeight from "./LoseWeight";
 import DietTable from "./DietTable";
-import "./bmr.css";
-import {
-  Badge,
-  Button,
-  Card,
-  CardBody,
-  CardImg,
-  FormGroup,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
-  Container,
-  Row,
-  Col,
-} from "reactstrap";
+import { Button, Input, FormGroup, Label, Row, Col } from "reactstrap";
+import AppContext from "Context/AppContext";
+
 class MyBMR extends Component {
+  static contextType = AppContext;
   state = {
     bmr: 0,
     lose: 0,
@@ -100,6 +88,11 @@ class MyBMR extends Component {
       var riceValue = Math.round((carbsValue / 32) * 100);
       var eggValue = Math.round(EggProtien / 4);
       if (gainValue > 0) {
+        this.context.setRice(riceValue);
+        this.context.setChicken(chickenValue);
+        this.context.setOlive(oliveValue);
+        this.context.setEgg(eggValue);
+
         this.setState({
           fats: fatsValue,
           carbs: carbsValue,
@@ -113,8 +106,6 @@ class MyBMR extends Component {
         });
       }
     }
-
-    console.log(this.state.lose);
   };
   gainWeight = () => {
     const { opened1 } = this.state;
@@ -133,6 +124,11 @@ class MyBMR extends Component {
       var riceValue = Math.round((carbsValue / 32) * 100);
       var eggValue = Math.round(EggProtien / 4);
       if (gainValue > 0) {
+        this.context.setRice(riceValue);
+        this.context.setChicken(chickenValue);
+        this.context.setOlive(oliveValue);
+        this.context.setEgg(eggValue);
+
         this.setState({
           fats: fatsValue,
           carbs: carbsValue,
@@ -153,84 +149,63 @@ class MyBMR extends Component {
     const { opened } = this.state;
     const { opened1 } = this.state;
     return (
-      <div
-        className="container mt-7
-      "
-      >
-        <div style={{ textAlign: "center" }} className="myBox">
-          <h2>
-            <strong>My BMR</strong>
-          </h2>
-          <h2>
-            <strong>Fill in your info</strong>
-          </h2>
-          <select id="gender">
-            <option selected value="Male">
-              Male
-            </option>
+      <div>
+        <div className="card container shadow font-weight-bold">
+          <h2>BMR Calculator</h2>
+          <h3>Fill in your info</h3>
+          <FormGroup>
+            <Label for="gender">Gender</Label>
+            <Input type="select" name="select" id="gender">
+              <option selected value="Male">
+                Male
+              </option>
+              <option value="Female">Female</option>
+            </Input>
+          </FormGroup>
 
-            <option value="Female">Female</option>
-          </select>
-          <br />
-          <br />
-          <h4>
-            <strong> Weight:</strong>
+          <FormGroup>
+            <Label for="weight">Weight</Label>
+            <Input type="number" id="weight" value={this.state.title} />
+          </FormGroup>
 
-            <Input
-              style={{ width: "250px", marginLeft: "35px" }}
-              id="weight"
-              value={this.state.title}
-              size="10"
-            ></Input>
-          </h4>
-          <div style={{ textAlign: "center" }}>
-            <h4>
-              <strong> Height</strong>
-              <br></br> <strong>feet:</strong>
-              <Input
-                style={{ width: "250px", marginLeft: "35px" }}
-                className="space"
-                id="heightFt"
-                value={this.state.title}
-                size="2"
-              />
-              &nbsp; <strong>inches:</strong>
-              <Input
-                style={{ width: "250px", marginLeft: "35px" }}
-                className="space"
-                id="heightIn"
-                value={this.state.title}
-                size="1"
-              />
-            </h4>
-          </div>
-          <h4>
-            <strong> Age:</strong>
+          <Row>
+            <Col>
+              <FormGroup>
+                <Label for="heightFt">Height feet</Label>
+                <Input type="number" id="heightFt" value={this.state.title} />
+              </FormGroup>
+            </Col>
 
-            <Input
-              style={{ width: "250px", marginLeft: "35px" }}
-              className="space"
-              id="age"
-              value={this.state.title}
-              size="5"
-            />
-            <br></br>
-          </h4>
+            <Col>
+              <FormGroup>
+                <Label for="heightIn">Height inches</Label>
+                <Input type="number" id="heightIn" value={this.state.title} />
+              </FormGroup>
+            </Col>
+          </Row>
+
+          <FormGroup>
+            <Label for="age">Age</Label>
+            <Input type="number" id="age" value={this.state.title} />
+          </FormGroup>
 
           <Button
             color="success"
-            style={{ marginBottom: "10px" }}
             onClick={this.calculateBmr}
-            className="btn btn-primary"
+            className="btn btn-primary mb-3"
           >
             {" "}
             <strong> Calculate</strong>
           </Button>
-          <h6>
-            <strong> Your daily calorie intake should be</strong>
-            {this.state.bmr}
-          </h6>
+
+          {this.state.bmr > 0 && (
+            <div className="h5">
+              Your daily calorie intake should be{" "}
+              <span className="font-weight-bold">{this.state.bmr}</span>
+            </div>
+          )}
         </div>
+<<<<<<< HEAD
         <div style={{ background: "#add8e6" }} className="mt-5 mb-5">
           <h4 id="gainOrLoss">
             <strong>Do You Want to Gain Weight or lose Weight?</strong>
@@ -242,32 +217,40 @@ class MyBMR extends Component {
             className="btn btn-primary mt-3 mb-3"
           >
             <strong>Gain</strong>
+=======
+
+        <div className="mt-5 mb-5">
+          <h4 id="gainOrLoss">Do You Want to Gain Weight or lose Weight?</h4>
+
+          <Button color="info" onClick={this.gainWeight} className="mt-3 mb-3">
+            Gain
+>>>>>>> ef74aa6bcef19ad0b1c7ea61f854e49936b6594c
           </Button>
 
           <Button
             color="success"
             onClick={this.loseWeight}
-            className="btn btn-primary mt-3 mb-3"
+            className="mt-3 mb-3"
           >
-            <strong>Lose</strong>
+            Lose
           </Button>
           {opened && (
-            <div className="boxContent">
-              {<LoseWeight lose={this.state.lose} />}{" "}
+            <div className="text-center pt-1 border border-success rounded text-capitalize mb-1">
+              {<LoseWeight lose={this.state.lose} />}
             </div>
           )}
 
           {opened1 && (
-            <div className="boxContent">
-              {<LoseWeight lose={this.state.gain} />}{" "}
+            <div className="text-center pt-1 border border-info rounded text-capitalize mb-1">
+              {<LoseWeight gain={this.state.gain} />}
             </div>
           )}
 
           <DietTable
-            rice={this.state.rice}
-            chicken={this.state.chicken}
-            olive={this.state.olive}
-            egg={this.state.egg}
+            rice={this.context.dietTable.rice}
+            chicken={this.context.dietTable.chicken}
+            olive={this.context.dietTable.olive}
+            egg={this.context.dietTable.egg}
           />
         </div>
       </div>

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import CartScrollBar from "./CartScrollBar";
-import Counter from "./Counter";
 import EmptyCart from "../empty-states/EmptyCart";
 import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
 import { findDOMNode } from "react-dom";
+import brandLogo from "../../../assets/img/brand/gymx.jpeg";
 
 class Header extends Component {
   constructor(props) {
@@ -72,7 +72,10 @@ class Header extends Component {
     cartItems = this.state.cart.map((product) => {
       return (
         <li className="cart-item" key={product.name}>
-          <img className="product-image" src={product.image} />
+          <img
+            className="product-image"
+            src={process.env.REACT_APP_API_URL + product.image.url}
+          />
           <div className="product-info">
             <p className="product-name">{product.name}</p>
             <p className="product-price">{product.price}</p>
@@ -110,13 +113,14 @@ class Header extends Component {
       );
     }
     return (
-      <header style={{}} className="">
+      <header>
         <div className="container">
           <div className="brand">
             <img
               className="logo"
-              src="./../../../../assets/img/brand/gymx.jpeg"
+              src={brandLogo}
               alt="Brand Logo"
+              style={{ width: 40, height: 40 }}
             />
           </div>
 

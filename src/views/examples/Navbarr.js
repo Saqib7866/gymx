@@ -38,7 +38,7 @@ class Navbarr extends Component {
             <NavLink to="/" className="navbar-brand ml-5">
               <img
                 src={gymxLogo}
-                class="d-inline-block align-center mb-2"
+                className="d-inline-block align-center mb-2"
                 alt="logo"
               />
               <span className="h3 text-bold text-white"> GYMX</span>
@@ -71,6 +71,10 @@ class Navbarr extends Component {
                     <strong>BMR/BMI</strong>
                   </NavLink>
                 </ReactBootStrap.NavDropdown>
+
+                <NavLink to="/diet-plan" className="nav-link">
+                  <strong>Diet Plan</strong>
+                </NavLink>
 
                 <ReactBootStrap.Nav.Link href="/#about">
                   <strong>About</strong>
