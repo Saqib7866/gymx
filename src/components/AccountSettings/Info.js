@@ -6,10 +6,6 @@ import axios from "axios";
 import AppContext from "Context/AppContext";
 
 const formSchema = Yup.object().shape({
-  state: Yup.string().required("Required"),
-  district: Yup.string().required("Required"),
-  city: Yup.string().required("Required"),
-  pincode: Yup.number().required("Required"),
   address: Yup.string().required("Required"),
   phone_number: Yup.number().required("Required"),
 });
@@ -20,39 +16,29 @@ class InfoTab extends React.Component {
     loading: false,
     error: "",
     initialState: {
-      state: "",
-      district: "",
-      city: "",
-      pincode: "",
       address: "",
       phone_number: "",
+      achievements: "",
+      fee: "",
     },
   };
 
   componentDidMount() {
-    // if (!this.context.user.address) {
-    //   setTimeout(() => {
-    //     if (this.context.user.address) {
-    //       let { initialState } = this.state;
-    //       initialState.state = this.context.user.address.state;
-    //       initialState.district = this.context.user.address.district;
-    //       initialState.city = this.context.user.address.city;
-    //       initialState.pincode = this.context.user.address.pincode;
-    //       initialState.address = this.context.user.address.street;
-    //       initialState.phone_number = this.context.user.phone_number;
-    //       this.setState({ initialState });
-    //     }
-    //   }, 1000);
-    // } else {
-    //   let { initialState } = this.state;
-    //   initialState.state = this.context.user.address.state;
-    //   initialState.district = this.context.user.address.district;
-    //   initialState.city = this.context.user.address.city;
-    //   initialState.pincode = this.context.user.address.pincode;
-    //   initialState.address = this.context.user.address.street;
-    //   initialState.phone_number = this.context.user.phone_number;
-    //   this.setState({ initialState });
-    // }
+    if (!this.context.user.address) {
+      setTimeout(() => {
+        if (this.context.user.address) {
+          let { initialState } = this.state;
+          initialState.address = this.context.user.address;
+          initialState.phone_number = this.context.user.phone_number;
+          this.setState({ initialState });
+        }
+      }, 1000);
+    } else {
+      let { initialState } = this.state;
+      initialState.address = this.context.user.address;
+      initialState.phone_number = this.context.user.phone_number;
+      this.setState({ initialState });
+    }
   }
 
   handleSubmit = (values) => {
@@ -65,13 +51,7 @@ class InfoTab extends React.Component {
             process.env.REACT_APP_API_URL + "/users/" + this.context.user.id,
             {
               phone_number: values.phone_number,
-              address: {
-                state: values.state,
-                district: values.district,
-                city: values.city,
-                pincode: values.pincode,
-                street: values.address,
-              },
+              address: values.address,
             },
             {
               headers: {
@@ -111,58 +91,6 @@ class InfoTab extends React.Component {
                   )}
                   <FormGroup>
                     <Field
-                      name="state"
-                      id="state"
-                      className={`form-control ${
-                        errors.state && touched.state && "is-invalid"
-                      }`}
-                      placeholder="State / Province"
-                    />
-                    {errors.state && touched.state ? (
-                      <div className="text-danger">{errors.state}</div>
-                    ) : null}
-                  </FormGroup>
-                  <FormGroup>
-                    <Field
-                      name="district"
-                      id="district"
-                      className={`form-control ${
-                        errors.district && touched.district && "is-invalid"
-                      }`}
-                      placeholder="District / Division"
-                    />
-                    {errors.district && touched.district ? (
-                      <div className="text-danger">{errors.district}</div>
-                    ) : null}
-                  </FormGroup>
-                  <FormGroup>
-                    <Field
-                      name="city"
-                      id="city"
-                      placeholder="City / Town"
-                      className={`form-control ${
-                        errors.city && touched.city && "is-invalid"
-                      }`}
-                    />
-                    {errors.city && touched.city ? (
-                      <div className="text-danger">{errors.city}</div>
-                    ) : null}
-                  </FormGroup>
-                  <FormGroup>
-                    <Field
-                      name="pincode"
-                      id="pincode"
-                      placeholder="Pincode"
-                      className={`form-control ${
-                        errors.pincode && touched.pincode && "is-invalid"
-                      }`}
-                    />
-                    {errors.pincode && touched.pincode ? (
-                      <div className="text-danger">{errors.pincode}</div>
-                    ) : null}
-                  </FormGroup>
-                  <FormGroup>
-                    <Field
                       component="textarea"
                       name="address"
                       id="address"
@@ -191,9 +119,46 @@ class InfoTab extends React.Component {
                     ) : null}
                   </FormGroup>
 
+                  {/* {this.context.user.role.name === "Nutritionist" && (
+                    <React.Fragment>
+                      <FormGroup>
+                        <Field
+                          name="achievements"
+                          id="achievements"
+                          placeholder="Achievements"
+                          className={`form-control ${
+                            errors.achievements &&
+                            touched.achievements &&
+                            "is-invalid"
+                          }`}
+                        />
+                        {errors.achievements && touched.achievements ? (
+                          <div className="text-danger">
+                            {errors.achievements}
+                          </div>
+                        ) : null}
+                      </FormGroup>
+                      <FormGroup>
+                        <Field
+                          name="fee"
+                          id="fee"
+                          placeholder="Fee"
+                          className={`form-control ${
+                            errors.fee && touched.fee && "is-invalid"
+                          }`}
+                        />
+                        {errors.fee && touched.fee ? (
+                          <div className="text-danger">{errors.fee}</div>
+                        ) : null}
+                      </FormGroup>
+                    </React.Fragment>
+                  )} */}
+
                   <div className="d-flex justify-content-start flex-wrap">
                     <Button className="mr-1 mb-1" color="primary" type="submit">
-                      {this.state.loading && <Spinner color="white" />}
+                      {this.state.loading && (
+                        <Spinner size="sm" color="white" />
+                      )}
                       {!this.state.loading && "Save Changes"}
                     </Button>
                     <Button

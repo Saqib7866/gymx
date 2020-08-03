@@ -6,10 +6,12 @@ import {
   DropdownItem,
   DropdownToggle,
   Dropdown,
+  Media,
 } from "reactstrap";
 import AppContext from "Context/AppContext";
 import { history } from "../../history";
 import gymxLogo from "../../assets/img/brand/gymx.jpeg";
+import noimage from "../../assets/img/user/no-image.png";
 
 class Navbarr extends Component {
   static contextType = AppContext;
@@ -91,9 +93,22 @@ class Navbarr extends Component {
               <div className="ml-auto mr-3">
                 <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
                   <DropdownToggle caret className="p-1 px-3">
-                    <i
+                    {/* <i
                       className="fa fa-user-circle-o"
                       style={{ fontSize: 20 }}
+                    /> */}
+                    <Media
+                      className="rounded-circle"
+                      object
+                      src={
+                        this.context.user.image
+                          ? process.env.REACT_APP_API_URL +
+                            this.context.user.image.formats.thumbnail.url
+                          : noimage
+                      }
+                      alt="User"
+                      height="25"
+                      width="25"
                     />{" "}
                     {this.context.user.name}
                   </DropdownToggle>
