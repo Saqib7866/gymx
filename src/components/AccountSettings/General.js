@@ -86,13 +86,16 @@ class General extends React.Component {
   uploadImage = () => {
     if (this.state.img !== undefined) {
       this.setState({ uploading: true });
-
-      let formData = new FormData();
-      formData.append("ref", "user");
-      formData.append("refId", this.context.user.id);
-      formData.append("field", "image");
+      let imageId = "";
+      let previousImageId = this.context.user.image
+        ? this.context.user.image.id
+          ? this.context.user.image.id
+          : ""
+        : "";
+      const formData = new FormData();
       formData.append("files", this.state.imgFile);
 
+      //uploading image to server
       axios
         .post(process.env.REACT_APP_API_URL + "/upload", formData, {
           headers: {
@@ -102,15 +105,49 @@ class General extends React.Component {
           },
         })
         .then((res) => {
-          console.log("Uploaded: ", res);
-          this.setState({ uploading: true });
-          if (this.context.user.image || this.context.user.image.id) {
-            this.setState({ uploading: false });
+          imageId = res.data[0].id;
+          //assigning uploaded image to user
+          axios
+            .put(
+              process.env.REACT_APP_API_URL + "/users/" + this.context.user.id,
+              {
+                image: imageId,
+              },
+              {
+                headers: {
+                  Authorization:
+                    "Bearer " +
+                    localStorage.getItem(process.env.REACT_APP_TOKEN_NAME),
+                },
+              }
+            )
+            .then((res) => {
+              this.context.setUser(res.data);
+              this.setState({ uploading: false, img: undefined });
+              this.loadData();
+            })
+            .catch((res) => {
+              this.setState({ uploading: false });
+              //removing image from server if it is not assigned to the user
+              axios.delete(
+                process.env.REACT_APP_API_URL + "/upload/files/" + imageId,
+                {
+                  headers: {
+                    Authorization:
+                      "Bearer " +
+                      localStorage.getItem(process.env.REACT_APP_TOKEN_NAME),
+                  },
+                }
+              );
+            });
+
+          if (previousImageId) {
+            //removing previous image of user from server
             axios
               .delete(
                 process.env.REACT_APP_API_URL +
                   "/upload/files/" +
-                  this.context.user.image.id,
+                  previousImageId,
                 {
                   headers: {
                     Authorization:
