@@ -1,0 +1,33 @@
+body {
+  padding-top: 0px;
+}
+.mainClass {
+  padding: 0px;
+}
+.miniClass1 {
+  flex: 0.3;
+  text-align: start;
+}
+.miniClass2 {
+  text-align: start;
+  align-content: start;
+  justify-content: start;
+}
+
+.toggleClass {
+  justify-content: left;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+
+.portfolio-nav > .nav-link {
+  font-weight: bold;
+}
+
+.miniclass3 {
+  margin-left: 430px;
+}
+.btnCenter {
+  flex: 1;
+  justify-content: left;
+}
