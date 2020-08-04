@@ -4,8 +4,6 @@ import Carousel from "./IndexSections/Carousel.js";
 import About from "components/Navbars/about.js";
 import Carosell from "./examples/Carosell.js";
 import ContactUs from "./examples/ContactUs.js";
-import Events from "./examples/Events.js";
-import Userdash from "./examples/userdash.js";
 
 class Index extends React.Component {
   componentDidMount() {
@@ -22,8 +20,6 @@ class Index extends React.Component {
             <About />
             <Carousel />
             <ContactUs />
-            <Events />
-            <Userdash />
           </div>
         </main>
       </>
