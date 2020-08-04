@@ -27,24 +27,6 @@ const AccountSettings = lazy(() =>
 );
 const HNuts = lazy(() => import("./views/examples/HiredNutrionist"));
 
-// import Index from "./views/Index";
-// import Login from "views/examples/Login.js";
-// import Register from "views/examples/Register.js";
-// import SimpleFooter from "components/Footers/SimpleFooter";
-// import Navbarr from "views/examples/Navbarr";
-// import ContactUs from "views/examples/ContactUs";
-// import DietPlan from "components/DietPlan/DietPlan";
-// import Cart from "components/cart/Cart";
-// import Nuts from "views/examples/nutritionists";
-// import Main from "components/BMR/Main";
-// import Userdash from "views/examples/userdash";
-// import NDashboard from "components/NDashboard/ndashboard";
-// import FinalWorkout from "components/Workout/FinalWorkout";
-
-// import Events from "views/examples/Events";
-// import AccountSettings from "components/AccountSettings/AccountSettings";
-// import HNuts from "views/examples/HiredNutrionist";
-
 ReactDOM.render(
   <Suspense
     fallback={
@@ -70,6 +52,10 @@ ReactDOM.render(
           <Route path="/nutritionist-dashboard" component={NDashboard} />
 
           <Route path="/account-settings" component={AccountSettings} />
+
+          <Route path="/workout" component={FinalWorkout} />
+
+          <Route path="/events" component={Events} />
         </Switch>
         <SimpleFooter />
       </Router>

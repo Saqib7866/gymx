@@ -159,7 +159,7 @@ class Userdash extends React.Component {
                                 outline
                                 type="button"
                               >
-                                <NavLink to="/Workout" className="Workout">
+                                <NavLink to="/workout" className="Workout">
                                   <strong style={{ color: " white" }}>
                                     Workout
                                   </strong>
@@ -198,9 +198,8 @@ class Userdash extends React.Component {
                                 outline
                                 type="button"
                               >
-                                <NavLink to="/Events" className="Events">
+                                <NavLink to="/events" className="Events">
                                   <strong style={{ color: " white" }}>
-                                    {" "}
                                     Events
                                   </strong>
                                 </NavLink>
