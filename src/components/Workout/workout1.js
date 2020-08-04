@@ -1,24 +1,7 @@
 import React, { Component } from "react";
 import Table1 from "./table1.js";
 import Table2 from "./table2.js";
-import {
-  Table,
-  Button,
-  PopoverBody,
-  UncontrolledPopover,
-  Card,
-  CardHeader,
-  CardBody,
-  FormGroup,
-  Form,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
-  Container,
-  Row,
-  Col,
-} from "reactstrap";
+import { Button, Row, Col } from "reactstrap";
 
 class Workout1 extends Component {
   constructor(props) {
