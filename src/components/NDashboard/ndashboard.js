@@ -1,20 +1,7 @@
 import React from "react";
 
 // reactstrap components
-import {
-  Button,
-  PopoverBody,
-  UncontrolledPopover,
-  FormGroup,
-  Form,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
-  Row,
-  Col,
-  Spinner,
-} from "reactstrap";
+import { FormGroup, Form, Input, Row, Col, Spinner, Label } from "reactstrap";
 import "./ndashboard.css";
 import AppContext from "Context/AppContext";
 import { Redirect } from "react-router";
@@ -60,7 +47,7 @@ class NDashboard extends React.Component {
                 return (
                   <>
                     <div className="backk  section">
-                      <Row>
+                      <Row className="m-5">
                         <Col sm="12">
                           <div className="d-flex justify-content-center">
                             <img
@@ -81,60 +68,31 @@ class NDashboard extends React.Component {
                             />
                           </div>
                         </Col>
-                        <Col sm="12">
-                          <div
-                            style={{
-                              textAlign: "right",
-                              marginBottom: "50px",
-                              marginRight: "250px",
-                            }}
-                          >
-                            <Button
-                              color="primary"
-                              id="tooltip641002859"
-                              type="button"
-                            >
-                              Request
-                            </Button>
-                            <UncontrolledPopover
-                              placement="right"
-                              target="tooltip641002859"
-                            >
-                              <PopoverBody>
-                                <div>
-                                  <textarea
-                                    className="form-control"
-                                    style={{ width: "300px", height: "300px" }}
-                                    type="text"
-                                    placeholder="Enter text here"
-                                  />
-                                </div>
-                              </PopoverBody>
-                            </UncontrolledPopover>
-                          </div>
-                        </Col>
                       </Row>
 
-                      <Form
-                        style={{ textAlign: "right" }}
-                        className="container"
-                      >
+                      <Form className="container">
                         <Row>
                           <Col md="6">
                             <FormGroup>
+                              <Label>Email</Label>
                               <Input
                                 id="exampleFormControlInput1"
                                 placeholder="name@example.com"
                                 type="email"
+                                value={this.context.user.email}
+                                disabled
                               />
                             </FormGroup>
                           </Col>
                           <Col md="6">
                             <FormGroup>
+                              <Label>Name</Label>
                               <Input
                                 className=""
                                 placeholder="Name"
                                 type="text"
+                                value={this.context.user.name}
+                                disabled
                               />
                             </FormGroup>
                           </Col>
@@ -142,62 +100,43 @@ class NDashboard extends React.Component {
                         <Row>
                           <Col md="6">
                             <FormGroup>
-                              <InputGroup className="mb-4">
-                                <InputGroupAddon addonType="prepend">
-                                  <InputGroupText>
-                                    <i className="ni ni-zoom-split-in" />
-                                  </InputGroupText>
-                                </InputGroupAddon>
-                                <Input placeholder="Price" type="number" />
-                              </InputGroup>
+                              <Label>Fee</Label>
+                              <Input
+                                placeholder="Fee"
+                                type="number"
+                                value={this.context.user.fee}
+                                disabled
+                              />
                             </FormGroup>
                           </Col>
                           <Col md="6">
                             <FormGroup>
-                              <InputGroup className="mb-4">
-                                <Input placeholder="Contact" type="number" />
-                                <InputGroupAddon addonType="append">
-                                  <InputGroupText>
-                                    <i className="ni ni-zoom-split-in" />
-                                  </InputGroupText>
-                                </InputGroupAddon>
-                              </InputGroup>
-                            </FormGroup>
-                          </Col>
-                        </Row>
-                        <Row>
-                          <Col md="6">
-                            <FormGroup className="has-success">
+                              <Label>Contact No.</Label>
                               <Input
-                                className="is-valid"
-                                placeholder="Education"
-                                type="text"
-                              />
-                            </FormGroup>
-                          </Col>
-                          <Col md="6">
-                            <FormGroup className="has-success">
-                              <Input
-                                className="is-valid"
-                                placeholder="Password"
-                                type="password"
+                                placeholder="Contact"
+                                type="number"
+                                value={this.context.user.phone_number}
+                                disabled
                               />
                             </FormGroup>
                           </Col>
                         </Row>
-
-                        <div>
-                          <textarea
-                            className="form-control"
-                            style={{ width: "500px" }}
-                            placeholder="Achievement"
+                        <FormGroup>
+                          <Label>Achievements</Label>
+                          <Input
+                            type="text"
+                            placeholder="Achievements"
+                            value={JSON.parse(
+                              this.context.user.achievements
+                            ).toString()}
+                            disabled
                           />
-                        </div>
-                        <div style={{ float: "left", marginTop: "10px" }}>
+                        </FormGroup>
+                        {/* <div style={{ float: "left", marginTop: "10px" }}>
                           <Button color="success" type="button">
                             Save
                           </Button>
-                        </div>
+                        </div> */}
                       </Form>
                     </div>
                   </>
