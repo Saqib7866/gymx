@@ -19,6 +19,7 @@ import "./ndashboard.css";
 import AppContext from "Context/AppContext";
 import { Redirect } from "react-router";
 import Axios from "axios";
+import noImage from "../../assets/img/user/no-image.png";
 
 class NDashboard extends React.Component {
   static contextType = AppContext;
@@ -63,10 +64,15 @@ class NDashboard extends React.Component {
                         <Col sm="12">
                           <div className="d-flex justify-content-center">
                             <img
-                              alt={c.user.image.name}
+                              alt={
+                                c.user.image ? c.user.image.name : "user-image"
+                              }
                               className="rounded-circle img-center img-fluid shadow shadow-lg--hover"
                               src={
-                                process.env.REACT_APP_API_URL + c.user.image.url
+                                c.user.image
+                                  ? process.env.REACT_APP_API_URL +
+                                    c.user.image.url
+                                  : noImage
                               }
                               style={{
                                 width: "200px",

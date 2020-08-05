@@ -6,6 +6,7 @@ import "./userdash.css";
 import { Button, FormGroup, Input, Row, Col, Spinner } from "reactstrap";
 import AppContext from "Context/AppContext";
 import Axios from "axios";
+import noimage from "../../assets/img/user/no-image.png";
 
 class Userdash extends React.Component {
   static contextType = AppContext;
@@ -61,7 +62,10 @@ class Userdash extends React.Component {
                               alt="..."
                               className="rounded-circle img-center img-fluid shadow shadow-lg--hover"
                               src={
-                                process.env.REACT_APP_API_URL + c.user.image.url
+                                c.user.image
+                                  ? process.env.REACT_APP_API_URL +
+                                    c.user.image.url
+                                  : noimage
                               }
                               style={{
                                 width: "200px",
