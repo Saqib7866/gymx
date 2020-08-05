@@ -1,22 +1,5 @@
 import React, { Component } from "react";
-import {
-  Table,
-  Button,
-  PopoverBody,
-  UncontrolledPopover,
-  Card,
-  CardHeader,
-  CardBody,
-  FormGroup,
-  Form,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
-  Container,
-  Row,
-  Col,
-} from "reactstrap";
+import { Table } from "reactstrap";
 
 class Table1 extends Component {
   render() {

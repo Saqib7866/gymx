@@ -1,26 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
-// nodejs library that concatenates classes
-import classnames from "classnames";
 import "./workout.css";
 // reactstrap components
-import {
-  Table,
-  Button,
-  Card,
-  CardHeader,
-  CardBody,
-  FormGroup,
-  Form,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
-  Container,
-  Row,
-  Col,
-} from "reactstrap";
-import background from "../../assets/img/theme/bghome2.jpg";
+import { Button } from "reactstrap";
 
 class Workout extends React.Component {
   constructor(props) {

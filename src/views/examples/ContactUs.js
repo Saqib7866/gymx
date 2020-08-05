@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./Navbarr.css";
-import * as ReactBootStrap from "react-bootstrap";
 import "./contactus.css";
 class ContactUs extends Component {
   state = {};
