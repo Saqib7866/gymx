@@ -9,7 +9,7 @@ export default class DietPlan extends Component {
   static contextType = AppContext;
   render() {
     return (
-      <div className="container mt-7">
+      <div className="container mt-9 mb-9">
         <Card className="p-3 shadow">
           <CardTitle className="h2 container">Diet Plan</CardTitle>
           <CardBody>

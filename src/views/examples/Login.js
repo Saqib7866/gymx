@@ -36,9 +36,7 @@ class Login extends React.Component {
   };
 
   componentDidMount() {
-    document.documentElement.scrollTop = 0;
-    document.scrollingElement.scrollTop = 0;
-    this.refs.main.scrollTop = 0;
+    window.scrollTo(0, 0);
   }
 
   handleSubmit = (e) => {
@@ -53,10 +51,14 @@ class Login extends React.Component {
         })
         .then((res) => {
           localStorage.setItem(process.env.REACT_APP_TOKEN_NAME, res.data.jwt);
-          console.log(res.data.user);
           this.context.setUser(res.data.user);
-          history.push("/");
           this.setState({ loading: false });
+          if (res.data.user.user_type.name === "Member") {
+            history.push("/user-dashboard");
+            // return <Redirect to="/user-dashboard" />;
+          } else {
+            history.push("/nutritionist-dashboard");
+          }
         })
         .catch((error) => {
           this.setState({
@@ -76,7 +78,7 @@ class Login extends React.Component {
         <main ref="main">
           <section className="section section-shaped section-lg">
             <div className="shape shape-style-1 bg-gradient-default"></div>
-            <Container className="pt-lg-7">
+            <Container className="pt-8">
               <Row className="justify-content-center mt-n7">
                 <Col lg="5">
                   <Card className="bg-secondary shadow border-0">

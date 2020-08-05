@@ -32,14 +32,20 @@ class Register extends React.Component {
     policy: false,
     error: "",
     loading: false,
+    user_types: [],
+    selectedType: "",
   };
 
   componentDidMount() {
-    if (localStorage.getItem(process.env.REACT_APP_TOKEN_NAME) === null) {
-      document.documentElement.scrollTop = 0;
-      document.scrollingElement.scrollTop = 0;
-      this.refs.main.scrollTop = 0;
-    }
+    window.scrollTo(0, 0);
+    Axios.get(process.env.REACT_APP_API_URL + "/user-types")
+      .then((res) => {
+        this.setState({ user_types: res.data });
+        this.setState({ selectedType: res.data[0].id });
+      })
+      .catch((res) => {
+        console.log(res);
+      });
   }
 
   handleSubmit = (e) => {
@@ -62,12 +68,18 @@ class Register extends React.Component {
         username: this.state.email.split("@")[0],
         email: this.state.email,
         password: this.state.password,
+        user_type: this.state.selectedType,
       })
         .then((res) => {
           localStorage.setItem(process.env.REACT_APP_TOKEN_NAME, res.data.jwt);
           this.context.setUser(res.data.user);
-          history.push("/");
           this.setState({ loading: false });
+
+          if (res.data.user.user_type.name === "Member") {
+            history.push("/user-dashboard");
+          } else {
+            history.push("/nutritionist-dashboard");
+          }
         })
         .catch((res) => {
           this.setState({
@@ -123,7 +135,10 @@ class Register extends React.Component {
                                   backgroundColor: "rgba(52,52,52,0.4)",
                                 }}
                               >
-                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <i
+                                  className="fa fa-user"
+                                  aria-hidden="true"
+                                ></i>
                               </InputGroupText>
                             </InputGroupAddon>
                             <Input
@@ -196,7 +211,7 @@ class Register extends React.Component {
                             />
                           </InputGroup>
                         </FormGroup>
-                        <FormGroup className="mb-5">
+                        <FormGroup>
                           <InputGroup className="col-sm-12 input-group-alternative mb-4">
                             <InputGroupAddon addonType="prepend">
                               <InputGroupText
@@ -223,6 +238,38 @@ class Register extends React.Component {
                               }}
                               required
                             />
+                          </InputGroup>
+                        </FormGroup>
+                        <FormGroup className="mb-5">
+                          <InputGroup className="col-sm-12 input-group-alternative mb-4">
+                            <InputGroupAddon addonType="prepend">
+                              <InputGroupText
+                                style={{
+                                  backgroundColor: "rgba(52,52,52,0.4)",
+                                }}
+                              >
+                                <i className="fa fa-users" />
+                              </InputGroupText>
+                            </InputGroupAddon>
+                            <Input
+                              type="select"
+                              name="roleSelect"
+                              id="roleSelect"
+                              style={{
+                                backgroundColor: "rgba(52,52,52,0.4)",
+                                color: "white",
+                              }}
+                              required
+                              onChange={(e) => {
+                                this.setState({ selectedType: e.target.value });
+                              }}
+                            >
+                              {this.state.user_types.map((type) => (
+                                <option key={type.id} value={type.id}>
+                                  {type.name}
+                                </option>
+                              ))}
+                            </Input>
                           </InputGroup>
                         </FormGroup>
                         <Row className="my-4">

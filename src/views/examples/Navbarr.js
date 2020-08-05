@@ -63,13 +63,13 @@ class Navbarr extends Component {
                   title="Services"
                   id="collasible-nav-dropdown"
                 >
-                  <NavLink to="/BuyProducts" className="dropdown-item">
+                  <NavLink to="/buy-products" className="dropdown-item">
                     <strong>Buy Products</strong>
                   </NavLink>
-                  <NavLink to="/BookNutrionist" className="dropdown-item">
+                  <NavLink to="/book-nutrionist" className="dropdown-item">
                     <strong>Book Nutrionist Appointment</strong>
                   </NavLink>
-                  <NavLink to="/BMR/BMI" className="dropdown-item">
+                  <NavLink to="/bmr-bmi" className="dropdown-item">
                     <strong>BMR/BMI</strong>
                   </NavLink>
                 </ReactBootStrap.NavDropdown>
@@ -83,7 +83,7 @@ class Navbarr extends Component {
                 </ReactBootStrap.Nav.Link>
 
                 <ReactBootStrap.Nav.Link href="/#ContactUs">
-                  <strong>Contact</strong>
+                  <strong>Contact Us</strong>
                 </ReactBootStrap.Nav.Link>
               </ReactBootStrap.Nav>
             </div>
@@ -93,10 +93,6 @@ class Navbarr extends Component {
               <div className="ml-auto mr-3">
                 <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
                   <DropdownToggle caret className="p-1 px-3">
-                    {/* <i
-                      className="fa fa-user-circle-o"
-                      style={{ fontSize: 20 }}
-                    /> */}
                     <Media
                       className="rounded-circle"
                       object
@@ -112,28 +108,48 @@ class Navbarr extends Component {
                     />{" "}
                     {this.context.user.name}
                   </DropdownToggle>
-                  <DropdownMenu right>
-                    <NavLink to="/account-settings">
-                      <DropdownItem className="p-1 px-3">
-                        <i className="fa fa-cogs" />
-                        Settings
-                      </DropdownItem>
-                    </NavLink>
-                    <DropdownItem divider />
-                    <DropdownItem
-                      className="p-1 px-3"
-                      onClick={() => {
-                        localStorage.removeItem(
-                          process.env.REACT_APP_TOKEN_NAME
+                  <AppContext.Consumer>
+                    {(c) => {
+                      if (!c.loading && c.user.user_type) {
+                        return (
+                          <DropdownMenu right>
+                            <NavLink
+                              to={
+                                c.user.user_type.name === "Member"
+                                  ? "/user-dashboard"
+                                  : "/nutritionist-dashboard"
+                              }
+                            >
+                              <DropdownItem className="p-1 px-3">
+                                <i className="fa fa-tachometer" />
+                                Dashboard
+                              </DropdownItem>
+                            </NavLink>
+                            <NavLink to="/account-settings">
+                              <DropdownItem className="p-1 px-3">
+                                <i className="fa fa-cogs" />
+                                Settings
+                              </DropdownItem>
+                            </NavLink>
+                            <DropdownItem divider />
+                            <DropdownItem
+                              className="p-1 px-3"
+                              onClick={() => {
+                                localStorage.removeItem(
+                                  process.env.REACT_APP_TOKEN_NAME
+                                );
+                                this.context.setUser({});
+                                history.push("/");
+                              }}
+                            >
+                              <i className="fa fa-sign-out" />
+                              Logout
+                            </DropdownItem>
+                          </DropdownMenu>
                         );
-                        this.context.setUser({});
-                        history.push("/");
-                      }}
-                    >
-                      <i className="fa fa-sign-out" />
-                      Logout
-                    </DropdownItem>
-                  </DropdownMenu>
+                      }
+                    }}
+                  </AppContext.Consumer>
                 </Dropdown>
               </div>
             )}
@@ -141,11 +157,11 @@ class Navbarr extends Component {
             {localStorage.getItem(process.env.REACT_APP_TOKEN_NAME) ===
               null && (
               <div className="row ml-auto mr-3">
-                <NavLink to="/Register" className="btn btn-neutral mr-2">
+                <NavLink to="/register" className="btn btn-neutral mr-2">
                   <span className="fa fa-user-plus mr-1" />
                   Register
                 </NavLink>
-                <NavLink to="/Login" className="btn btn-neutral">
+                <NavLink to="/login" className="btn btn-neutral">
                   <span className="fa fa-sign-in mr-1" />
                   Login
                 </NavLink>

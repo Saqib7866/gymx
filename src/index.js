@@ -1,104 +1,65 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
+import { AppProvider } from "Context/AppContext";
 
 import "assets/vendor/nucleo/css/nucleo.css";
 import "assets/vendor/font-awesome/css/font-awesome.min.css";
 import "assets/scss/argon-design-system-react.scss?v1.1.0";
+import { Spinner } from "reactstrap";
+import { history } from "history.js";
 
-import Index from "views/Index.js";
-import Login from "views/examples/Login.js";
-import Register from "views/examples/Register.js";
-import SimpleFooter from "components/Footers/SimpleFooter";
-import Navbarr from "views/examples/Navbarr";
-import ContactUs from "views/examples/ContactUs";
-import DietPlan from "components/DietPlan/DietPlan";
-import Cart from "components/cart/Cart";
-import Nuts from "views/examples/nutritionists";
-import Main from "components/BMR/Main";
-import Userdash from "views/examples/userdash";
-import NDashboard from "components/NDashboard/ndashboard";
-import FinalWorkout from "components/Workout/FinalWorkout";
-import { AppProvider } from "Context/AppContext";
-import Events from "views/examples/Events";
-import AccountSettings from "components/AccountSettings/AccountSettings";
-import HNuts from "views/examples/HiredNutrionist";
+const Index = lazy(() => import("./views/Index.js"));
+const SimpleFooter = lazy(() => import("./components/Footers/SimpleFooter"));
+const Navbarr = lazy(() => import("./views/examples/Navbarr"));
+const Login = lazy(() => import("./views/examples/Login"));
+const Register = lazy(() => import("./views/examples/Register.js"));
+const Cart = lazy(() => import("./components/cart/Cart"));
+const DietPlan = lazy(() => import("./components/DietPlan/DietPlan"));
+const Nuts = lazy(() => import("./views/examples/nutritionists"));
+const Main = lazy(() => import("./components/BMR/Main"));
+const Userdash = lazy(() => import("./views/examples/userdash"));
+const NDashboard = lazy(() => import("./components/NDashboard/NDashboard"));
+const FinalWorkout = lazy(() => import("./components/Workout/FinalWorkout"));
+const Events = lazy(() => import("./views/examples/Events"));
+const AccountSettings = lazy(() =>
+  import("./components/AccountSettings/AccountSettings")
+);
+const HNuts = lazy(() => import("./views/examples/HiredNutrionist"));
 
 ReactDOM.render(
-  <AppProvider>
-    <BrowserRouter>
-      <Navbarr />
-      <Switch>
-        <Route path="/" exact render={(props) => <Index {...props} />} />
-        <Route path="#about" exact render={(props) => <about {...props} />} />
-        <Route
-          path="#contactUs"
-          exact
-          render={(props) => <ContactUs {...props} />}
-        />
-        <Route
-          path="/BuyProducts"
-          exact
-          render={(props) => <Cart {...props} />}
-        />
-        <Route path="/" exact render={(props) => <Register {...props} />} />
-        <Route
-          path="/BookNutrionist"
-          exact
-          render={(props) => <Nuts {...props} />}
-        />
-        <Route path="/BMR/BMI" exact render={(props) => <Main {...props} />} />
-        <Route path="/Login" exact render={(props) => <Login {...props} />} />
-        <Route
-          path="/Register"
-          exact
-          render={(props) => <Register {...props} />}
-        />
+  <Suspense
+    fallback={
+      <div className="d-flex vh-100 justify-content-center align-items-center">
+        <Spinner size="lg" color="primary" />
+      </div>
+    }
+  >
+    <AppProvider>
+      <Router history={history}>
+        <Navbarr />
+        <Switch>
+          <Route exact path="/" component={Index} />
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
 
-        <Route
-          path="/ndash"
-          exact
-          render={(props) => <NDashboard {...props} />}
-        />
-        <Route path="/Main" exact render={(props) => <Main {...props} />} />
-        <Route
-          path="/UserDashboard"
-          exact
-          render={(props) => <Userdash {...props} />}
-        />
-        <Route path="/workout" exact render={(props) => <Main {...props} />} />
-        <Route
-          path="/FinalWorkout"
-          exact
-          render={(props) => <FinalWorkout {...props} />}
-        />
-        <Route
-          path="/DietPlan"
-          exact
-          render={(props) => <Events {...props} />}
-        />
-        <Route
-          path="/ProgressRecord"
-          exact
-          render={(props) => <Events {...props} />}
-        />
-        <Route
-          path="/Workout"
-          exact
-          render={(props) => <FinalWorkout {...props} />}
-        />
-        <Route path="/MyBMR" exact render={(props) => <Main {...props} />} />
-        <Route path="/Events" exact render={(props) => <Events {...props} />} />
+          <Route path="/buy-products" component={Cart} />
+          <Route path="/book-nutrionist" component={Nuts} />
+          <Route path="/bmr-bmi" component={Main} />
+          <Route path="/diet-plan" component={DietPlan} />
 
-        <Route path="/HNuts" exact render={(props) => <HNuts {...props} />} />
+          <Route path="/user-dashboard" component={Userdash} />
+          <Route path="/nutritionist-dashboard" component={NDashboard} />
 
-        <Route path="/diet-plan" component={DietPlan} />
+          <Route path="/account-settings" component={AccountSettings} />
 
-        <Route path="/account-settings" component={AccountSettings} />
-        <Redirect to="/" />
-      </Switch>
-      <SimpleFooter />
-    </BrowserRouter>
-  </AppProvider>,
+          <Route path="/workout" component={FinalWorkout} />
+
+          <Route path="/events" component={Events} />
+        </Switch>
+        <SimpleFooter />
+      </Router>
+    </AppProvider>
+  </Suspense>,
   document.getElementById("root")
 );

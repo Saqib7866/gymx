@@ -5,6 +5,7 @@ const AppContext = React.createContext();
 
 class AppProvider extends Component {
   state = {
+    loading: true,
     user: {},
     dietTable: {
       rice: 0,
@@ -15,6 +16,7 @@ class AppProvider extends Component {
   };
 
   componentDidMount() {
+    this.setState({ loading: true });
     if (localStorage.getItem(process.env.REACT_APP_TOKEN_NAME) !== null) {
       Axios.get(process.env.REACT_APP_API_URL + "/users/me", {
         headers: {
@@ -23,7 +25,16 @@ class AppProvider extends Component {
           )}`,
         },
       }).then((res) => {
-        this.setUser(res.data);
+        let user = res.data;
+        Axios.get(
+          process.env.REACT_APP_API_URL + "/user-types/" + user.user_type
+        ).then((res) => {
+          user.user_type = res.data;
+          this.setUser(user);
+          setTimeout(() => {
+            this.setState({ loading: false });
+          }, 1000);
+        });
       });
     }
   }
