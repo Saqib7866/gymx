@@ -60,9 +60,7 @@ class InfoTab extends React.Component {
         let { initialState } = this.state;
         initialState.address = this.context.user.address;
         initialState.phone_number = this.context.user.phone_number;
-        initialState.achievements = JSON.parse(
-          this.context.user.achievements
-        ).toString();
+        initialState.achievements = this.context.user.achievements;
         initialState.fee = this.context.user.fee;
         this.setState({ initialState });
       } else {
@@ -85,9 +83,7 @@ class InfoTab extends React.Component {
             {
               phone_number: values.phone_number,
               address: values.address,
-              achievements: values.achievements
-                ? JSON.stringify(values.achievements.split(","))
-                : [],
+              achievements: values.achievements ? values.achievements : "",
               fee: values.fee ? values.fee : 0,
             },
             {
