@@ -14,10 +14,26 @@ export default class DietPlan extends Component {
           <CardTitle className="h2 container">Diet Plan</CardTitle>
           <CardBody>
             <DietTable
-              rice={this.context.dietTable.rice}
-              chicken={this.context.dietTable.chicken}
-              olive={this.context.dietTable.olive}
-              egg={this.context.dietTable.egg}
+              rice={
+                this.context.user.diet_plan
+                  ? this.context.user.diet_plan.rice
+                  : this.context.dietTable.rice
+              }
+              chicken={
+                this.context.user.diet_plan
+                  ? this.context.user.diet_plan.chicken
+                  : this.context.dietTable.chicken
+              }
+              olive={
+                this.context.user.diet_plan
+                  ? this.context.user.diet_plan.olive
+                  : this.context.dietTable.olive
+              }
+              egg={
+                this.context.user.diet_plan
+                  ? this.context.user.diet_plan.egg
+                  : this.context.dietTable.egg
+              }
             />
           </CardBody>
         </Card>

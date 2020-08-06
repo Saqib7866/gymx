@@ -4,6 +4,7 @@ import LoseWeight from "./LoseWeight";
 import DietTable from "./DietTable";
 import { Button, Input, FormGroup, Label, Row, Col } from "reactstrap";
 import AppContext from "Context/AppContext";
+import Axios from "axios";
 
 class MyBMR extends Component {
   static contextType = AppContext;
@@ -44,6 +45,7 @@ class MyBMR extends Component {
             gain: final_bmr + 500,
             lose: final_bmr - 500,
           });
+          this.recordUserWeight(weight);
         } else {
           this.setState({ bmr: 0 });
         }
@@ -61,6 +63,7 @@ class MyBMR extends Component {
             gain: final_bmr + 500,
             lose: final_bmr - 500,
           });
+          this.recordUserWeight(weight);
         } else {
           this.setState({ bmr: 0 });
         }
@@ -104,6 +107,7 @@ class MyBMR extends Component {
           opened: !opened,
           opened1: false,
         });
+        this.updateUserDiet(riceValue, chickenValue, oliveValue, eggValue);
       }
     }
   };
@@ -140,8 +144,65 @@ class MyBMR extends Component {
           opened1: !opened1,
           opened: false,
         });
+        this.updateUserDiet(riceValue, chickenValue, oliveValue, eggValue);
       }
-      console.log(this.state.gain);
+    }
+  };
+
+  recordUserWeight = (weight) => {
+    if (localStorage.getItem(process.env.REACT_APP_TOKEN_NAME) !== null) {
+      let progress_record = this.context.user.progress_record
+        ? this.context.user.progress_record
+        : [];
+      progress_record.push({ weight, date: new Date() });
+      Axios.put(
+        process.env.REACT_APP_API_URL + "/users/" + this.context.user.id,
+        {
+          progress_record,
+        },
+        {
+          headers: {
+            Authorization:
+              "Bearer " +
+              localStorage.getItem(process.env.REACT_APP_TOKEN_NAME),
+          },
+        }
+      )
+        .then((res) => {
+          this.context.setUser(res.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  };
+
+  updateUserDiet = (rice, chicken, olive, egg) => {
+    if (localStorage.getItem(process.env.REACT_APP_TOKEN_NAME) !== null) {
+      Axios.put(
+        process.env.REACT_APP_API_URL + "/users/" + this.context.user.id,
+        {
+          diet_plan: {
+            rice,
+            chicken,
+            olive,
+            egg,
+          },
+        },
+        {
+          headers: {
+            Authorization:
+              "Bearer " +
+              localStorage.getItem(process.env.REACT_APP_TOKEN_NAME),
+          },
+        }
+      )
+        .then((res) => {
+          this.context.setUser(res.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
   };
 
@@ -206,7 +267,7 @@ class MyBMR extends Component {
           )}
         </div>
 
-        <div className="mt-5 mb-5">
+        <div className="mt-5 mb-5 card shadow p-3">
           <h4 id="gainOrLoss">Do You Want to Gain Weight or lose Weight?</h4>
 
           <Button color="info" onClick={this.gainWeight} className="mt-3 mb-3">

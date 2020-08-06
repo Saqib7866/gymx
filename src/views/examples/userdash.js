@@ -154,7 +154,7 @@ class Userdash extends React.Component {
                           </Col>
 
                           <Col md="6">
-                            <NavLink to="/mybmr" className="BMR">
+                            <NavLink to="/bmr-bmi" className="BMR">
                               <Button
                                 style={{
                                   height: "100px",
