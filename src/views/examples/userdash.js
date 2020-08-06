@@ -91,123 +91,123 @@ class Userdash extends React.Component {
                       <div className="container section ">
                         <Row>
                           <Col md="6">
-                            <Button
-                              style={{
-                                height: "100px",
-                                width: "300px",
-                                marginTop: "15px",
-                              }}
-                              color="danger"
-                              outline
-                              type="button"
-                            >
-                              <NavLink to="/DietPlan" className="DietPlan">
+                            <NavLink to="/diet-plan" className="DietPlan">
+                              <Button
+                                style={{
+                                  height: "100px",
+                                  width: "300px",
+                                  marginTop: "15px",
+                                }}
+                                color="danger"
+                                outline
+                                type="button"
+                              >
                                 <strong style={{ color: " white" }}>
                                   Diet Plan
                                 </strong>
-                              </NavLink>
-                            </Button>
+                              </Button>
+                            </NavLink>
                           </Col>
 
                           <Col md="6">
-                            <Button
-                              style={{
-                                height: "100px",
-                                width: "300px",
-                                marginTop: "15px",
-                              }}
-                              color="info"
-                              outline
-                              type="button"
+                            <NavLink
+                              to="/progress-record"
+                              className="ProgressRecord"
                             >
-                              <NavLink
-                                to="/ProgressRecord"
-                                className="ProgressRecord"
+                              <Button
+                                style={{
+                                  height: "100px",
+                                  width: "300px",
+                                  marginTop: "15px",
+                                }}
+                                color="info"
+                                outline
+                                type="button"
                               >
                                 <strong style={{ color: " white" }}>
                                   {" "}
                                   Progress Record
                                 </strong>
-                              </NavLink>
-                            </Button>
+                              </Button>
+                            </NavLink>
                           </Col>
                         </Row>
 
                         <Row>
                           <Col md="6">
-                            <Button
-                              style={{
-                                height: "100px",
-                                width: "300px",
-                                marginTop: "15px",
-                              }}
-                              color="warning"
-                              outline
-                              type="button"
-                            >
-                              <NavLink to="/workout" className="Workout">
+                            <NavLink to="/workout" className="Workout">
+                              <Button
+                                style={{
+                                  height: "100px",
+                                  width: "300px",
+                                  marginTop: "15px",
+                                }}
+                                color="warning"
+                                outline
+                                type="button"
+                              >
                                 <strong style={{ color: " white" }}>
                                   Workout
                                 </strong>
-                              </NavLink>
-                            </Button>
+                              </Button>
+                            </NavLink>
                           </Col>
 
                           <Col md="6">
-                            <Button
-                              style={{
-                                height: "100px",
-                                width: "300px",
-                                marginTop: "15px",
-                              }}
-                              color="warning  "
-                              outline
-                              type="button"
-                            >
-                              <NavLink to="/MyBMR" className="BMR">
+                            <NavLink to="/mybmr" className="BMR">
+                              <Button
+                                style={{
+                                  height: "100px",
+                                  width: "300px",
+                                  marginTop: "15px",
+                                }}
+                                color="warning  "
+                                outline
+                                type="button"
+                              >
                                 <strong style={{ color: " white" }}>
                                   My BMR
                                 </strong>
-                              </NavLink>
-                            </Button>
+                              </Button>
+                            </NavLink>
                           </Col>
                         </Row>
                         <Row>
                           <Col sm="6">
-                            <Button
-                              style={{
-                                height: "100px",
-                                width: "300px",
-                                marginTop: "15px",
-                              }}
-                              color="success"
-                              outline
-                              type="button"
-                            >
-                              <NavLink to="/events" className="Events">
+                            <NavLink to="/events" className="Events">
+                              <Button
+                                style={{
+                                  height: "100px",
+                                  width: "300px",
+                                  marginTop: "15px",
+                                }}
+                                color="success"
+                                outline
+                                type="button"
+                              >
                                 <strong style={{ color: " white" }}>
                                   Events
                                 </strong>
-                              </NavLink>
-                            </Button>
+                              </Button>
+                            </NavLink>
                           </Col>
                           <Col sm="6">
-                            <Button
-                              style={{
-                                height: "100px",
-                                width: "300px",
-                                marginTop: "15px",
-                              }}
-                              color="info"
-                              outline
-                              type="button"
-                            >
-                              <NavLink to="/HNuts" className="HNuts">
+                            <NavLink to="/hired-nutritionist" className="HNuts">
+                              <Button
+                                style={{
+                                  height: "100px",
+                                  width: "300px",
+                                  marginTop: "15px",
+                                }}
+                                color="info"
+                                outline
+                                type="button"
+                              >
                                 <strong style={{ color: " white" }}>
-                                  s Hired Nutritionist
+                                  Hired Nutritionist
                                 </strong>
-                              </NavLink>
-                            </Button>
+                              </Button>
+                            </NavLink>
                           </Col>
                         </Row>
                       </div>
