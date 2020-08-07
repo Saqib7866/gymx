@@ -1,4 +1,5 @@
 import React from "react";
+
 // reactstrap components
 import {
   NavItem,
@@ -9,27 +10,30 @@ import {
   Col
 } from "reactstrap";
 
+
+
+
 class SimpleFooter extends React.Component {
   render() {
     return (
       <>
         <footer className=" footer">
           <Container>
-            <Row className=" row-grid align-items-center mb-5">
+            <Row className=" row-grid align-items-center  ">
               <Col lg="6">
-                <h3 className=" text-primary font-weight-light mb-2">
+                <h4 className=" text-primary font-weight-light mb-2 ml-n7 ">
                   Thank you for supporting us!
-                </h3>
-                <h4 className=" mb-0 font-weight-light">
-                  The last three or four reps is what makes the muscle grow. ...
                 </h4>
+                <h5 className="font-weight-light ml-n7">
+                  The last three or four reps is what makes the muscle grow. ...
+                </h5>
               </Col>
             </Row>
             <hr />
             <Row className=" align-items-center justify-content-md-between">
-              <Col md="6">
+              <Col sm="6">
                 <div className=" copyright">
-                  © {new Date().getFullYear()}{" "}
+                  {new Date().getFullYear()}
                   <a href="" target="">
                     Copy Rights Reserved By GYMx
                   </a>
@@ -39,12 +43,12 @@ class SimpleFooter extends React.Component {
               <Col md="6">
                 <Nav className=" nav-footer justify-content-end">
                   <NavItem>
-                    <NavLink href="" target="">
+                    <NavLink to="" className="">
                       Contact US
                     </NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink href="" target="">
+                    <NavLink to="" className="">
                       About Us
                     </NavLink>
                   </NavItem>

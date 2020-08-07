@@ -52,12 +52,12 @@ class Login extends React.Component {
           localStorage.setItem(process.env.REACT_APP_TOKEN_NAME, res.data.jwt);
           this.context.setUser(res.data.user);
           this.setState({ loading: false });
-          if (res.data.user.user_type.name === "Member") {
-            history.push("/user-dashboard");
-            // return <Redirect to="/user-dashboard" />;
-          } else {
-            history.push("/nutritionist-dashboard");
-          }
+          // if (res.data.user.user_type.name === "Member") {
+          //   history.push("/user-dashboard");
+          // } else {
+          //   history.push("/nutritionist-dashboard");
+          // }
+          history.push("/");
         })
         .catch((error) => {
           this.setState({

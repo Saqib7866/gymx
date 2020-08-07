@@ -3,6 +3,8 @@ import {
   Table
 } from "reactstrap";
 
+
+
 class Table1 extends Component {
   render() {
     return (

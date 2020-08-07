@@ -75,11 +75,12 @@ class Register extends React.Component {
           this.context.setUser(res.data.user);
           this.setState({ loading: false });
 
-          if (res.data.user.user_type.name === "Member") {
-            history.push("/user-dashboard");
-          } else {
-            history.push("/nutritionist-dashboard");
-          }
+          // if (res.data.user.user_type.name === "Member") {
+          //   history.push("/user-dashboard");
+          // } else {
+          //   history.push("/nutritionist-dashboard");
+          // }
+          history.push("/");
         })
         .catch((res) => {
           this.setState({
