@@ -4,6 +4,7 @@ import EmptyCart from "../empty-states/EmptyCart";
 import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
 import { findDOMNode } from "react-dom";
 import brandLogo from "../../../assets/img/brand/gymx.jpeg";
+import { NavLink, Redirect } from "react-router-dom";
 
 class Header extends Component {
   constructor(props) {
@@ -212,12 +213,16 @@ class Header extends Component {
             >
               <CartScrollBar>{view}</CartScrollBar>
               <div className="action-block">
-                <button
+              <NavLink to="/placeorder">
+              <button
                   type="button"
-                  className={this.state.cart.length > 0 ? " " : "disabled"}
+                  className={this.state.cart.length > 0 ? "enabled" : "disabled"}
+                  
                 >
                   PROCEED TO CHECKOUT
                 </button>
+              </NavLink>
+                
               </div>
             </div>
           </div>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Col, Row, Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { Col, Row, Button, Form, FormGroup, Label, Input, NavLink } from "reactstrap";
+import ReactStripePaymentBtn from "components/ReactStripe/ReactStripePaymentBtn";
 class PlaceOrder extends Component {
   state = {
     name: "Saqib",
@@ -69,9 +70,9 @@ class PlaceOrder extends Component {
               </FormGroup>
             </Col>
           </Row>
-
-          <Button>Proceed to Payment</Button>
+               
         </Form>
+        <ReactStripePaymentBtn />
       </div>
     );
   }
