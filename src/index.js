@@ -8,9 +8,7 @@ import "assets/vendor/font-awesome/css/font-awesome.min.css";
 import "assets/scss/argon-design-system-react.scss?v1.1.0";
 import { Spinner } from "reactstrap";
 import { history } from "history.js";
-import PageNotFound from "components/PageNotFound/index.js";
-import ProgressRecord from "components/ProgressRecord/index.js";
-import HiredNutritionists from "components/HiredNutritionists/index.js";
+
 import About from "components/Navbars/about.js";
 import ContactUs from "views/examples/ContactUs.js";
 
@@ -28,8 +26,18 @@ const NDashboard = lazy(() => import("./components/NDashboard/NDashboard"));
 const FinalWorkout = lazy(() => import("./components/Workout/FinalWorkout"));
 const Events = lazy(() => import("./views/examples/EventCardDisplay"));
 const PlaceOrder = lazy(() => import("./views/examples/PlaceOrder"));
+const PageNotFound = lazy(() => import("./components/PageNotFound/index.js"));
 const AccountSettings = lazy(() =>
   import("./components/AccountSettings/AccountSettings")
+);
+const ProgressRecord = lazy(() =>
+  import("./components/ProgressRecord/index.js")
+);
+const HiredNutritionists = lazy(() =>
+  import("./components/HiredNutritionists/index.js")
+);
+const ClientBookings = lazy(() =>
+  import("./components/ClientBookings/index.js")
 );
 // const HNuts = lazy(() => import("./views/examples/HiredNutrionist"));
 
@@ -57,6 +65,7 @@ ReactDOM.render(
           <Route path="/diet-plan" component={DietPlan} />
           <Route path="/progress-record" component={ProgressRecord} />
           <Route path="/hired-nutritionist" component={HiredNutritionists} />
+          <Route path="/client-bookings" component={ClientBookings} />
 
           <Route path="/user-dashboard" component={Userdash} />
           <Route path="/nutritionist-dashboard" component={NDashboard} />

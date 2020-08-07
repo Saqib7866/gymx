@@ -1,11 +1,22 @@
 import React from "react";
 
 // reactstrap components
-import { FormGroup, Form, Input, Row, Col, Spinner, Label } from "reactstrap";
+import {
+  FormGroup,
+  Form,
+  Input,
+  Row,
+  Col,
+  Spinner,
+  Label,
+  Button,
+  Container,
+} from "reactstrap";
 import "./ndashboard.css";
 import AppContext from "Context/AppContext";
 import { Redirect } from "react-router";
 import noImage from "../../assets/img/user/no-image.png";
+import { Link } from "react-router-dom";
 
 class NDashboard extends React.Component {
   static contextType = AppContext;
@@ -133,6 +144,17 @@ class NDashboard extends React.Component {
                         />
                       </FormGroup>
                     </Form>
+                    <Container>
+                      <Row>
+                        <Col sm="12" className="text-center">
+                          <Link to="/client-bookings">
+                            <Button color="primary" outline>
+                              Client Bookings
+                            </Button>
+                          </Link>
+                        </Col>
+                      </Row>
+                    </Container>
                   </div>
                 </>
               );
