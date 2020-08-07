@@ -1,17 +1,6 @@
 import React from "react";
-
 import { NavLink, Redirect } from "react-router-dom";
-import "./userdash.css";
-// reactstrap components
-import {
-  Button,
-  FormGroup,
-  Input,
-  Row,
-  Col,
-  Spinner,
-  Container,
-} from "reactstrap";
+import { Button, Input, Row, Col, Spinner, Container } from "reactstrap";
 import AppContext from "Context/AppContext";
 import noimage from "../../assets/img/user/no-image.png";
 import background from "../../assets/img/theme/workout.jpg";
