@@ -137,7 +137,7 @@ class Nuts extends React.Component {
       return <Redirect to="/login" />;
     } else {
       return (
-        <div>
+        <div className="mt-n4">
           <div className="back1">
             <div className="d-flex justify-content-center m-5 navbar sticky-top">
               <div className="mt-5 w-50">

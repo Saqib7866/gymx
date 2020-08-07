@@ -17,7 +17,7 @@ class ProgressRecord extends Component {
     } else {
       return (
         <div
-          className="mt-5"
+          className=""
           style={{
             backgroundImage: `url(${background})`,
             backgroundSize: "cover",

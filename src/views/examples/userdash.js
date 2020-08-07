@@ -34,7 +34,6 @@ class Userdash extends React.Component {
             } else {
               return (
                 <div
-                  className="mt-5"
                   style={{
                     backgroundImage: `url(${background})`,
                     backgroundSize: "cover",

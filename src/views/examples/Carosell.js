@@ -14,7 +14,7 @@ class Carosell extends Component {
 
   render() {
     return (
-      <Carousel className="pt-5" interval="2600">
+      <Carousel className="pt-5 mt-n4" interval="2600">
         <Carousel.Item>
           <img
             className="d-block w-100 "

@@ -19,8 +19,8 @@ export default class DietPlan extends Component {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="container pt-9 mb-9">
-          <Card className="p-3 shadow">
+        <div className="container mb-9">
+          <Card className="pt-3 mt-4 shadow">
             <CardTitle className="h2 container">Diet Plan</CardTitle>
             <CardBody>
               <DietTable

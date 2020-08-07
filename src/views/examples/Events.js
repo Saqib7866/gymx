@@ -3,7 +3,6 @@ import "./Navbarr.css";
 import "assets/vendor/font-awesome/css/font-awesome.min.css";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
-import eventImg from "../../assets/img/theme/bghome.jpg";
 import noImage from "../../assets/img/user/no-image.png";
 
 import {

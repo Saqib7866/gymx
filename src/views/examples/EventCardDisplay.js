@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Events from "./Events";
-import axios from 'axios'
+import axios from "axios";
 class EventCardDisplay extends Component {
   constructor(props) {
     super(props);
@@ -10,29 +10,27 @@ class EventCardDisplay extends Component {
     };
   }
 
-  componentDidMount=()=>{
-
-      axios.get('http://localhost:1337/events').then(res => {
+  componentDidMount = () => {
+    axios
+      .get("http://localhost:1337/events")
+      .then((res) => {
         console.log(res.data);
-       this.setState({CardInfo:res.data})
-        
-    }).catch((res)=>{
-        console.log(res)
-    });
-  }
+        this.setState({ CardInfo: res.data });
+      })
+      .catch((res) => {
+        console.log(res);
+      });
+  };
   render() {
-    let cardDisplay = this.state.CardInfo.map((card,id) => {
+    let cardDisplay = this.state.CardInfo.map((card, id) => {
       return (
-        <div className="col-sm-4">
+        <div className="col-sm-4 mt-4">
           <Events
-           eventImg={card.image}
+            eventImg={card.image}
             eventName={card.name}
             eventDescp={card.description}
             eventDate={card.date}
-           
           />
-
-          
         </div>
       );
     });
