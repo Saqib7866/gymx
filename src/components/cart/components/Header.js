@@ -73,7 +73,7 @@ class Header extends Component {
       return (
         <li className="cart-item" key={product.name}>
           <img
-            className="product"
+            className="product-image"
             src={process.env.REACT_APP_API_URL + product.image.url}
             alt="Product"
           />
@@ -91,9 +91,7 @@ class Header extends Component {
             className="product-remove"
             href="#"
             onClick={this.props.removeProduct.bind(this, product.id)}
-          >
-            ×
-          </a>
+          ></a>
         </li>
       );
     });
@@ -115,7 +113,7 @@ class Header extends Component {
     }
     return (
       <header>
-        <div className="container mt-5">
+        <div className="container ">
           <div className="brand">
             <img
               className="logo"
@@ -196,7 +194,6 @@ class Header extends Component {
               ref="cartButton"
             >
               <img
-                style={{ background: "Yellow" }}
                 className={this.props.cartBounce ? "tada" : " "}
                 src="https://res.cloudinary.com/sivadass/image/upload/v1493548928/icons/bag.png"
                 alt="Cart"

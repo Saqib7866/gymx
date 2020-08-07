@@ -52,8 +52,8 @@ class Events extends Component {
                   {this.props.eventDate}
                 </h4>
               </CardTitle>
-              <CardText >
-                <p className="justify-content-center  " >
+              <CardText>
+                <p className="justify-content-center  ">
                   <strong>{this.props.eventDescp}</strong>
                 </p>
               </CardText>
