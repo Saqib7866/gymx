@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import StripeCheckout from 'react-stripe-checkout';
-import axios from 'axios';
+import Axios from 'axios';
+
 
 function ReactStripePaymentBtn(){
-
+    
     const [totalAmount,settotalAmount] = React.useState(100)
         let price = totalAmount * 100;
-     const   Ontoken=token=>{
+     const   Ontoken=(token)=>{
             const data = {token,totalAmount}
-            axios.post('/payment', data).then(res=>{
+            Axios.post('http://localhost:1337/api/payment', data).then(res=>{
                 console.log(res)
                 alert("Payment Successfuly Paid")
             }).catch(err => console.log(err))

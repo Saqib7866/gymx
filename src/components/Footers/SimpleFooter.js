@@ -1,7 +1,17 @@
 import React from "react";
 
 // reactstrap components
-import { NavItem, NavLink, Nav, Container, Row, Col } from "reactstrap";
+import {
+  NavItem,
+  NavLink,
+  Nav,
+  Container,
+  Row,
+  Col
+} from "reactstrap";
+
+
+
 
 class SimpleFooter extends React.Component {
   render() {

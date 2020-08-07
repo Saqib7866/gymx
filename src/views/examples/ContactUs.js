@@ -117,6 +117,7 @@ class ContactUs extends Component {
                     }}
                     className="btn btn-default"
                     onclick="document.getElementById('contact-form').submit();"
+                    
                   >
                     Send
                   </a>

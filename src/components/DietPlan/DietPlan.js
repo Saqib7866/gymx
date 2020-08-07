@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Card, CardHeader, CardTitle, CardBody } from "reactstrap";
+import { Card, CardTitle, CardBody } from "reactstrap";
 
 import background from "../../assets/img/theme/workout.jpg";
 

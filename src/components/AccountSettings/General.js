@@ -222,7 +222,7 @@ class General extends React.Component {
                               onChange={(e) => {
                                 var file = e.target.files[0];
                                 var reader = new FileReader();
-                                var url = reader.readAsDataURL(file);
+                                // var url = reader.readAsDataURL(file);
 
                                 reader.onloadend = (e) => {
                                   this.setState({

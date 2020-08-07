@@ -1,5 +1,9 @@
 import React, { Component } from "react";
-import { Table } from "reactstrap";
+import {
+  Table
+} from "reactstrap";
+
+
 
 class Table1 extends Component {
   render() {
