@@ -91,7 +91,7 @@ class Nuts extends React.Component {
                   </Col>
                 </Row>
                 <Button className="mt-4" color="primary" block>
-                  Book & Appointment
+                  Book Appointment
                 </Button>
               </CardBody>
             </Card>

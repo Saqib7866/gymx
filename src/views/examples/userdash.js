@@ -88,7 +88,7 @@ class Userdash extends React.Component {
                           </div>
                         </div>
                       </Row>
-                      <div className="container section ">
+                      <div className="container section mt-n8">
                         <Row>
                           <Col md="6">
                             <NavLink to="/diet-plan" className="DietPlan">
@@ -142,7 +142,7 @@ class Userdash extends React.Component {
                                   width: "300px",
                                   marginTop: "15px",
                                 }}
-                                color="warning"
+                                color="info"
                                 outline
                                 type="button"
                               >
@@ -181,7 +181,7 @@ class Userdash extends React.Component {
                                   width: "300px",
                                   marginTop: "15px",
                                 }}
-                                color="success"
+                                color="warning"
                                 outline
                                 type="button"
                               >
@@ -199,12 +199,35 @@ class Userdash extends React.Component {
                                   width: "300px",
                                   marginTop: "15px",
                                 }}
-                                color="info"
+                                color="success"
                                 outline
                                 type="button"
                               >
                                 <strong style={{ color: " white" }}>
                                   Hired Nutritionist
+                                </strong>
+                              </Button>
+                            </NavLink>
+                          </Col>
+                        </Row>
+                        <Row style={{ marginLeft: "350px" }}>
+                          <Col sm="6">
+                            <NavLink
+                              to="/book-nutrionist"
+                              className="book-nutrionist"
+                            >
+                              <Button
+                                style={{
+                                  height: "100px",
+                                  width: "300px",
+                                  marginTop: "20px",
+                                }}
+                                color="success"
+                                outline
+                                type="button"
+                              >
+                                <strong style={{ color: " white" }}>
+                                  Book Nutritionist
                                 </strong>
                               </Button>
                             </NavLink>

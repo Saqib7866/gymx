@@ -10,6 +10,8 @@ import { Spinner } from "reactstrap";
 import { history } from "history.js";
 import PageNotFound from "components/PageNotFound/index.js";
 import ProgressRecord from "components/ProgressRecord/index.js";
+import About from "components/Navbars/about.js";
+import ContactUs from "views/examples/ContactUs.js";
 
 const Index = lazy(() => import("./views/Index.js"));
 const SimpleFooter = lazy(() => import("./components/Footers/SimpleFooter"));
@@ -44,6 +46,8 @@ ReactDOM.render(
           <Route exact path="/" component={Index} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
+          <Route path="/contactus" component={ContactUs} />
+          <Route path="/aboutus" component={About} />
 
           <Route path="/buy-products" component={Cart} />
           <Route path="/book-nutrionist" component={Nuts} />

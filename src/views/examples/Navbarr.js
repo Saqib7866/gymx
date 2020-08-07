@@ -58,28 +58,12 @@ class Navbarr extends Component {
                   <strong>Home</strong>
                 </NavLink>
 
-                <ReactBootStrap.NavDropdown
-                  className="portfolio-nav"
-                  title="Services"
-                  id="collasible-nav-dropdown"
-                >
-                  <NavLink to="/buy-products" className="dropdown-item">
-                    <strong>Buy Products</strong>
-                  </NavLink>
-                  <NavLink to="/book-nutrionist" className="dropdown-item">
-                    <strong>Book Nutrionist Appointment</strong>
-                  </NavLink>
-                  <NavLink to="/bmr-bmi" className="dropdown-item">
-                    <strong>BMR/BMI</strong>
-                  </NavLink>
-                </ReactBootStrap.NavDropdown>
-
-                <NavLink to="/diet-plan" className="nav-link">
-                  <strong>Diet Plan</strong>
+                <NavLink to="/buy-products" className="nav-link">
+                  <strong>Buy Products</strong>
                 </NavLink>
 
                 <ReactBootStrap.Nav.Link href="/#about">
-                  <strong>About</strong>
+                  <strong>About us</strong>
                 </ReactBootStrap.Nav.Link>
 
                 <ReactBootStrap.Nav.Link href="/#ContactUs">
@@ -87,7 +71,17 @@ class Navbarr extends Component {
                 </ReactBootStrap.Nav.Link>
               </ReactBootStrap.Nav>
             </div>
+            <NavLink to="/buy-products" className="nav-link">
+              <strong>Buy Products</strong>
+            </NavLink>
 
+            <NavLink to="/aboutus" className="nav-link">
+              <strong>About us</strong>
+            </NavLink>
+
+            <NavLink to="/contactus" className="nav-link">
+              <strong>Contact Us</strong>
+            </NavLink>
             {localStorage.getItem(process.env.REACT_APP_TOKEN_NAME) !==
               null && (
               <div className="ml-auto mr-3">
