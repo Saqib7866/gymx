@@ -10,6 +10,7 @@ import { Spinner } from "reactstrap";
 import { history } from "history.js";
 import PageNotFound from "components/PageNotFound/index.js";
 import ProgressRecord from "components/ProgressRecord/index.js";
+import HiredNutritionists from "components/HiredNutritionists/index.js";
 import About from "components/Navbars/about.js";
 import ContactUs from "views/examples/ContactUs.js";
 
@@ -25,7 +26,7 @@ const Main = lazy(() => import("./components/BMR/Main"));
 const Userdash = lazy(() => import("./views/examples/userdash"));
 const NDashboard = lazy(() => import("./components/NDashboard/NDashboard"));
 const FinalWorkout = lazy(() => import("./components/Workout/FinalWorkout"));
-const Events = lazy(() => import("./views/examples/Events"));
+const Events = lazy(() => import("./views/examples/EventCardDisplay"));
 const AccountSettings = lazy(() =>
   import("./components/AccountSettings/AccountSettings")
 );
@@ -54,6 +55,7 @@ ReactDOM.render(
           <Route path="/bmr-bmi" component={Main} />
           <Route path="/diet-plan" component={DietPlan} />
           <Route path="/progress-record" component={ProgressRecord} />
+          <Route path="/hired-nutritionist" component={HiredNutritionists} />
 
           <Route path="/user-dashboard" component={Userdash} />
           <Route path="/nutritionist-dashboard" component={NDashboard} />
