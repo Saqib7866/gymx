@@ -73,7 +73,7 @@ class Header extends Component {
       return (
         <li className="cart-item" key={product.name}>
           <img
-            className="product"
+            className="product-image"
             src={process.env.REACT_APP_API_URL + product.image.url}
             alt="Product"
           />
@@ -115,7 +115,7 @@ class Header extends Component {
     }
     return (
       <header>
-        <div className="container mt-5">
+        <div className="container">
           <div className="brand">
             <img
               className="logo"
