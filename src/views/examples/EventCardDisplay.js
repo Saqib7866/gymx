@@ -24,7 +24,7 @@ class EventCardDisplay extends Component {
   render() {
     let cardDisplay = this.state.CardInfo.map((card, id) => {
       return (
-        <div className="col-sm-4 mt-4">
+        <div className="col-sm-4 mt-5">
           <Events
             eventImg={card.image}
             eventName={card.name}

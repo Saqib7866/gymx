@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { Col, Row, Button, Form, FormGroup, Label, Input, NavLink } from "reactstrap";
+import { Col, Row, Button, Form, FormGroup, Label, Input } from "reactstrap";
 import ReactStripePaymentBtn from "components/ReactStripe/ReactStripePaymentBtn";
+import "./placeorder.css";
 class PlaceOrder extends Component {
   state = {
     name: "Saqib",
@@ -16,20 +17,47 @@ class PlaceOrder extends Component {
   }
   render() {
     return (
-      <div>
-        <h2></h2>
+      <div className="bg ">
+        <h2
+          style={{
+            marginLeft: "20px",
+
+            color: "aliceblue",
+            justifyContent: "center",
+          }}
+        >
+          Personal Infromation
+        </h2>
         <Form>
           <Row form>
             <Col sm={6}>
               <FormGroup>
                 <Label for="name">{this.state.name}</Label>
-                <Input type="name" name="name" id="name" placeholder="Name" />
+                <Input
+                  style={{
+                    marginLeft: "20px",
+                    backgroundColor: "rgba(52,52,52,0.1)",
+                    border: "2px solid red",
+                    color: "white ",
+                    width: " 500px",
+                  }}
+                  type="name"
+                  name="name"
+                  id="name"
+                  placeholder="Name"
+                />
               </FormGroup>
             </Col>
             <Col sm={6}>
               <FormGroup>
                 <Label for="Email">{this.state.email}</Label>
                 <Input
+                  style={{
+                    backgroundColor: "rgba(52,52,52,0.1)",
+                    border: "2px solid red",
+                    color: "white ",
+                    width: " 500px",
+                  }}
                   type="email"
                   name="email"
                   id="email"
@@ -41,6 +69,13 @@ class PlaceOrder extends Component {
           <FormGroup>
             <Label for="address1">{this.state.address1}</Label>
             <Input
+              style={{
+                marginLeft: "20px",
+                backgroundColor: "rgba(52,52,52,0.1)",
+                border: "2px solid red",
+                color: "white ",
+                width: " 1120px",
+              }}
               type="text"
               name="address1"
               id="address1"
@@ -50,6 +85,13 @@ class PlaceOrder extends Component {
           <FormGroup>
             <Label for="address2">{this.state.address2}</Label>
             <Input
+              style={{
+                marginLeft: "20px",
+                backgroundColor: "rgba(52,52,52,0.1)",
+                border: "2px solid red",
+                color: "white ",
+                width: " 1120px",
+              }}
               type="text"
               name="address2"
               id="address2"
@@ -60,17 +102,39 @@ class PlaceOrder extends Component {
             <Col sm={6}>
               <FormGroup>
                 <Label for="city">{this.state.city}</Label>
-                <Input type="text" name="city" id="city" />
+                <Input
+                  style={{
+                    marginLeft: "20px",
+                    backgroundColor: "rgba(52,52,52,0.1)",
+                    border: "2px solid red",
+                    color: "white ",
+                    width: " 500px",
+                  }}
+                  type="text"
+                  name="city"
+                  id="city"
+                  placeholder="City"
+                />
               </FormGroup>
             </Col>
             <Col sm={2}>
               <FormGroup>
                 <Label for="zip">{this.state.zip}</Label>
-                <Input type="text" name="zip" id="zip" />
+                <Input
+                  style={{
+                    backgroundColor: "rgba(52,52,52,0.1)",
+                    border: "2px solid red",
+                    color: "white ",
+                    width: " 500px",
+                  }}
+                  type="text"
+                  name="zip"
+                  id="zip"
+                  placeholder="ZIP Code"
+                />
               </FormGroup>
             </Col>
           </Row>
-               
         </Form>
         <ReactStripePaymentBtn />
       </div>
