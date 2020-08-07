@@ -113,7 +113,7 @@ class Header extends Component {
     }
     return (
       <header>
-        <div className="container ">
+        <div className="container">
           <div className="brand">
             <img
               className="logo"
