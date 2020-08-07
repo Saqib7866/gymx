@@ -23,7 +23,7 @@ const Main = lazy(() => import("./components/BMR/Main"));
 const Userdash = lazy(() => import("./views/examples/userdash"));
 const NDashboard = lazy(() => import("./components/NDashboard/ndashboard"));
 const FinalWorkout = lazy(() => import("./components/Workout/FinalWorkout"));
-const Events = lazy(() => import("./views/examples/Events"));
+const Events = lazy(() => import("./views/examples/EventCardDisplay"));
 const AccountSettings = lazy(() =>
   import("./components/AccountSettings/AccountSettings")
 );
