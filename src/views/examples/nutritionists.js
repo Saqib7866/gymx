@@ -125,7 +125,7 @@ class Nuts extends React.Component {
                     this.bookNutritionist(nutritionist);
                   }}
                 >
-                  Book
+                  Book Appointment
                 </Button>
               </CardBody>
             </Card>

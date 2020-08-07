@@ -115,7 +115,7 @@ class Header extends Component {
     }
     return (
       <header>
-        <div className="container">
+        <div className="container mt-5">
           <div className="brand">
             <img
               className="logo"
