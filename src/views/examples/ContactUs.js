@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./Navbarr.css";
-import * as ReactBootStrap from "react-bootstrap";
 import "./contactus.css";
 class ContactUs extends Component {
   state = {};
@@ -118,6 +117,7 @@ class ContactUs extends Component {
                     }}
                     className="btn btn-default"
                     onclick="document.getElementById('contact-form').submit();"
+                    
                   >
                     Send
                   </a>

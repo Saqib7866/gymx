@@ -19,13 +19,13 @@ const DietPlan = lazy(() => import("./components/DietPlan/DietPlan"));
 const Nuts = lazy(() => import("./views/examples/nutritionists"));
 const Main = lazy(() => import("./components/BMR/Main"));
 const Userdash = lazy(() => import("./views/examples/userdash"));
-const NDashboard = lazy(() => import("./components/NDashboard/NDashboard"));
+const NDashboard = lazy(() => import("./components/NDashboard/ndashboard"));
 const FinalWorkout = lazy(() => import("./components/Workout/FinalWorkout"));
 const Events = lazy(() => import("./views/examples/Events"));
 const AccountSettings = lazy(() =>
   import("./components/AccountSettings/AccountSettings")
 );
-const HNuts = lazy(() => import("./views/examples/HiredNutrionist"));
+// const HNuts = lazy(() => import("./views/examples/HiredNutrionist"));
 
 ReactDOM.render(
   <Suspense

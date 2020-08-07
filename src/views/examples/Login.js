@@ -21,7 +21,6 @@ import {
   Spinner,
 } from "reactstrap";
 
-import SimpleFooter from "components/Footers/SimpleFooter.js";
 import axios from "axios";
 import { Redirect } from "react-router";
 import AppContext from "Context/AppContext";

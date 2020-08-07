@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Card, CardHeader, CardTitle, CardBody } from "reactstrap";
+import { Card, CardTitle, CardBody } from "reactstrap";
 
 import DietTable from "components/BMR/DietTable";
 import AppContext from "Context/AppContext";

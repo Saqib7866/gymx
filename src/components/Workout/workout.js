@@ -1,26 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
 // nodejs library that concatenates classes
-import classnames from "classnames";
 import "./workout.css";
 // reactstrap components
 import {
-  Table,
-  Button,
-  Card,
-  CardHeader,
-  CardBody,
-  FormGroup,
-  Form,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
-  Container,
-  Row,
-  Col,
+  Button
 } from "reactstrap";
-import background from "../../assets/img/theme/bghome2.jpg";
+
 
 class Workout extends React.Component {
   constructor(props) {
@@ -39,7 +24,7 @@ class Workout extends React.Component {
   }
 
   render() {
-    var { title, children } = this.props;
+    var {  children } = this.props;
     const { opened } = this.state;
 
     return (
