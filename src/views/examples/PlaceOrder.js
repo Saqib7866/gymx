@@ -17,16 +17,16 @@ class PlaceOrder extends Component {
   }
   render() {
     return (
-      <div className="bg ">
+      <div className="bg mt-5 ">
         <h2
           style={{
             marginLeft: "20px",
-
-            color: "aliceblue",
+            paddingTop: "20px",
+            color: "#b3ffff",
             justifyContent: "center",
           }}
         >
-          Personal Infromation
+          <strong>Personal Infromation</strong>
         </h2>
         <Form>
           <Row form>
@@ -35,9 +35,10 @@ class PlaceOrder extends Component {
                 <Label for="name">{this.state.name}</Label>
                 <Input
                   style={{
+                    marginTop: "5px",
                     marginLeft: "20px",
                     backgroundColor: "rgba(52,52,52,0.1)",
-                    border: "2px solid red",
+                    border: "2px solid #b3ffff",
                     color: "white ",
                     width: " 500px",
                   }}
@@ -53,8 +54,9 @@ class PlaceOrder extends Component {
                 <Label for="Email">{this.state.email}</Label>
                 <Input
                   style={{
+                    marginTop: "5px",
                     backgroundColor: "rgba(52,52,52,0.1)",
-                    border: "2px solid red",
+                    border: "2px solid #b3ffff",
                     color: "white ",
                     width: " 500px",
                   }}
@@ -70,9 +72,10 @@ class PlaceOrder extends Component {
             <Label for="address1">{this.state.address1}</Label>
             <Input
               style={{
+                marginTop: "5px",
                 marginLeft: "20px",
                 backgroundColor: "rgba(52,52,52,0.1)",
-                border: "2px solid red",
+                border: "2px solid #b3ffff",
                 color: "white ",
                 width: " 1120px",
               }}
@@ -86,9 +89,10 @@ class PlaceOrder extends Component {
             <Label for="address2">{this.state.address2}</Label>
             <Input
               style={{
+                marginTop: "5px",
                 marginLeft: "20px",
                 backgroundColor: "rgba(52,52,52,0.1)",
-                border: "2px solid red",
+                border: "2px solid #b3ffff",
                 color: "white ",
                 width: " 1120px",
               }}
@@ -98,15 +102,16 @@ class PlaceOrder extends Component {
               placeholder="Apartment, studio, or floor"
             />
           </FormGroup>
-          <Row form>
+          <Row className="mb-3" form>
             <Col sm={6}>
               <FormGroup>
                 <Label for="city">{this.state.city}</Label>
                 <Input
                   style={{
+                    marginTop: "5px",
                     marginLeft: "20px",
                     backgroundColor: "rgba(52,52,52,0.1)",
-                    border: "2px solid red",
+                    border: "2px solid #b3ffff",
                     color: "white ",
                     width: " 500px",
                   }}
@@ -122,8 +127,9 @@ class PlaceOrder extends Component {
                 <Label for="zip">{this.state.zip}</Label>
                 <Input
                   style={{
+                    marginTop: "5px",
                     backgroundColor: "rgba(52,52,52,0.1)",
-                    border: "2px solid red",
+                    border: "2px solid  #b3ffff",
                     color: "white ",
                     width: " 500px",
                   }}

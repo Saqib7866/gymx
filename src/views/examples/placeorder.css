@@ -1,6 +1,7 @@
 .bg {
   margin-top: 5;
   background-image: url(../../assets/img/theme/bghome.jpg);
+  height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
   color: aliceblue;
