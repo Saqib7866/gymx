@@ -4,8 +4,14 @@ import Carousel from "./IndexSections/Carousel.js";
 import About from "components/Navbars/about.js";
 import Carosell from "./examples/Carosell.js";
 import ContactUs from "./examples/ContactUs.js";
-import ReactStripePaymentBtn from "components/ReactStripe/ReactStripePaymentBtn.jsx";
+
+
+import ReactStripePaymentBtn from '../components/ReactStripe/ReactStripePaymentBtn'
+import EventCardDisplay from "./examples/EventCardDisplay.js";
+
+
 import PlaceOrder from "./examples/PlaceOrder.js";
+
 
 class Index extends React.Component {
   componentDidMount() {
@@ -23,7 +29,11 @@ class Index extends React.Component {
             <ReactStripePaymentBtn />
             <Carousel />
             <ContactUs />
+
+           <EventCardDisplay />
+
             <PlaceOrder />
+
           </div>
         </main>
       </>

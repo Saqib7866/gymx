@@ -1,7 +1,13 @@
 import React from "react";
+
+// nodejs library that concatenates classes
+
+
+
 import "./workout.css";
 // reactstrap components
 import { Button } from "reactstrap";
+
 
 class Workout extends React.Component {
   constructor(props) {
@@ -20,7 +26,7 @@ class Workout extends React.Component {
   }
 
   render() {
-    var { title, children } = this.props;
+    var {  children } = this.props;
     const { opened } = this.state;
 
     return (

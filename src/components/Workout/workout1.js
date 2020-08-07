@@ -29,7 +29,7 @@ class Workout1 extends Component {
     });
   }
   render() {
-    var { title, Component } = this.props;
+    
     const { opened } = this.state;
     const { opened1 } = this.state;
 

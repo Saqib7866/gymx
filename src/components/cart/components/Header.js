@@ -43,7 +43,7 @@ class Header extends Component {
   }
   handleClickOutside(event) {
     const cartNode = findDOMNode(this.refs.cartPreview);
-    const buttonNode = findDOMNode(this.refs.cartButton);
+    // const buttonNode = findDOMNode(this.refs.cartButton);
     if (cartNode && cartNode.classList.contains("active")) {
       if (!cartNode || !cartNode.contains(event.target)) {
         this.setState({
@@ -73,8 +73,9 @@ class Header extends Component {
       return (
         <li className="cart-item" key={product.name}>
           <img
-            className="product-image"
+            className="product"
             src={process.env.REACT_APP_API_URL + product.image.url}
+            alt="Product"
           />
           <div className="product-info">
             <p className="product-name">{product.name}</p>
@@ -114,7 +115,7 @@ class Header extends Component {
     }
     return (
       <header>
-        <div className="container">
+        <div className="container mt-5">
           <div className="brand">
             <img
               className="logo"

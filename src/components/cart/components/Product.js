@@ -61,7 +61,7 @@ class Product extends Component {
     let id = this.props.id;
     let quantity = this.props.productQuantity;
     return (
-      <div className="product">
+      <div className="product mt-5">
         <div className="product-image">
           <img
             src={process.env.REACT_APP_API_URL + image.url}

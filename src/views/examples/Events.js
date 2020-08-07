@@ -4,6 +4,7 @@ import "assets/vendor/font-awesome/css/font-awesome.min.css";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import eventImg from "../../assets/img/theme/bghome.jpg";
+import noImage from "../../assets/img/user/no-image.png";
 
 import {
   Button,
@@ -14,11 +15,11 @@ import {
   CardText,
 } from "reactstrap";
 class Events extends Component {
-  state = {
-    eventName: "Protein",
-    eventDescp: "Protein for muscle building",
-    // eventImg: "../../assets/img/theme/bghome.jpg",
-  };
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
   successToast = (name) => {
     toast("🦄 You Have Been Registered In " + name + " Succesfully", {
       position: "top-right",
@@ -33,22 +34,28 @@ class Events extends Component {
   render() {
     return (
       <div>
-        <h2 className="mb-3 mt-3 text-center">
-          <strong>Current Events</strong>
-        </h2>
-        <div className="mx-5 mb-5">
-          <Card style={{ width: "18rem" }}>
-            <CardImg variant="top" src={eventImg} />
+        <div className="mx-5 mb-5 mt-4 text-center">
+          <Card className="  border-light" style={{ width: "18rem" }}>
+            <CardImg
+              variant="top"
+              src={
+                this.props.eventImg !== undefined
+                  ? process.env.REACT_APP_API_URL + this.props.eventImg.url
+                  : noImage
+              }
+            />
             <CardBody>
               <CardTitle>
                 <h4>
-                  <strong>{this.state.eventName}</strong>
+                  <strong>{this.props.eventName}</strong>
+                  <br></br>
+                  {this.props.eventDate}
                 </h4>
               </CardTitle>
-              <CardText>
-                <h6>
-                  <strong>{this.state.eventDescp}</strong>
-                </h6>
+              <CardText >
+                <p className="justify-content-center  " >
+                  <strong>{this.props.eventDescp}</strong>
+                </p>
               </CardText>
             </CardBody>
 
@@ -57,7 +64,7 @@ class Events extends Component {
                 className="mt-4"
                 color="default"
                 onClick={() => {
-                  this.successToast(this.state.eventName);
+                  this.successToast(this.props.eventName);
                 }}
               >
                 Register Yourself

@@ -46,7 +46,6 @@ class HiredNutritionists extends Component {
   render() {
     return (
       <div
-        className="mt-5"
         style={{
           backgroundImage: `url(${background})`,
           backgroundSize: "cover",
