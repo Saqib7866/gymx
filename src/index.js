@@ -22,7 +22,7 @@ const DietPlan = lazy(() => import("./components/DietPlan/DietPlan"));
 const Nuts = lazy(() => import("./views/examples/nutritionists"));
 const Main = lazy(() => import("./components/BMR/Main"));
 const Userdash = lazy(() => import("./views/examples/userdash"));
-const NDashboard = lazy(() => import("./components/NDashboard/NDashboard"));
+const NDashboard = lazy(() => import("./components/NDashboard"));
 const FinalWorkout = lazy(() => import("./components/Workout/FinalWorkout"));
 const Events = lazy(() => import("./views/examples/EventCardDisplay"));
 const PlaceOrder = lazy(() => import("./views/examples/PlaceOrder"));
