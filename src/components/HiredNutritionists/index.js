@@ -7,6 +7,16 @@ import {
   Table,
   Container,
   Spinner,
+  Button,
+  ModalFooter,
+  ModalHeader,
+  FormGroup,
+  Label,
+  Input,
+  ModalBody,
+  Modal,
+  Row,
+  Col,
 } from "reactstrap";
 import Axios from "axios";
 import AppContext from "Context/AppContext";
@@ -16,8 +26,21 @@ class HiredNutritionists extends Component {
   static contextType = AppContext;
   constructor(props) {
     super(props);
-    this.state = { appointments: [], error: "", loading: true };
+    this.state = {
+      appointments: [],
+      error: "",
+      loading: true,
+      modalIsOpen: false,
+      appointment: "",
+      review: "",
+      error: "",
+      loadingReview: false,
+    };
   }
+
+  modalToggle = () => {
+    this.setState({ modalIsOpen: !this.state.modalIsOpen });
+  };
 
   componentDidMount() {
     if (this.context.user.id) {
@@ -81,6 +104,7 @@ class HiredNutritionists extends Component {
                               <th>Nutritionist Name</th>
                               <th>Date</th>
                               <th>Time</th>
+                              <th>Actions</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -91,6 +115,23 @@ class HiredNutritionists extends Component {
                                 <td>{a.date_time.split("T")[0]}</td>
                                 <td>
                                   {a.date_time.split("T")[1].split(".")[0]}
+                                </td>
+                                <td>
+                                  <Button
+                                    size="sm"
+                                    color="primary"
+                                    onClick={() => {
+                                      this.setState({
+                                        appointment: a,
+                                        review: "",
+                                        error: "",
+                                        modalIsOpen: true,
+                                      });
+                                    }}
+                                    disabled={a.review}
+                                  >
+                                    Add Review
+                                  </Button>
                                 </td>
                               </tr>
                             ))}
@@ -104,6 +145,112 @@ class HiredNutritionists extends Component {
             </Card>
           </Container>
         )}
+        <Modal
+          isOpen={this.state.modalIsOpen}
+          toggle={this.modalToggle}
+          centered
+        >
+          <ModalHeader toggle={this.modalToggle}>
+            Nutritionist Review
+          </ModalHeader>
+          <ModalBody>
+            {this.state.error && (
+              <Alert color="danger">{this.state.error}</Alert>
+            )}
+            <FormGroup>
+              <Label>Nutritionist</Label>
+              <Input
+                type="text"
+                value={
+                  this.state.appointment.nutritionist
+                    ? this.state.appointment.nutritionist.name
+                    : ""
+                }
+                disabled
+              />
+            </FormGroup>
+            <Row>
+              <Col>
+                <FormGroup>
+                  <Label>Appointment Date</Label>
+                  <Input
+                    type="text"
+                    value={
+                      this.state.appointment.date_time
+                        ? this.state.appointment.date_time.split("T")[0]
+                        : ""
+                    }
+                    disabled
+                  />
+                </FormGroup>
+              </Col>
+              <Col>
+                <FormGroup>
+                  <Label>Appointment Time</Label>
+                  <Input
+                    type="text"
+                    value={
+                      this.state.appointment.date_time
+                        ? this.state.appointment.date_time
+                            .split("T")[1]
+                            .split(".")[0]
+                        : ""
+                    }
+                    disabled
+                  />
+                </FormGroup>
+              </Col>
+            </Row>
+            <FormGroup>
+              <Label>Review</Label>
+              <Input
+                type="textarea"
+                onChange={(e) => {
+                  this.setState({ review: e.target.value });
+                }}
+              />
+            </FormGroup>
+          </ModalBody>
+          <ModalFooter>
+            <Button
+              color="primary"
+              onClick={() => {
+                if (!this.state.loadingReview) {
+                  this.setState({ loadingReview: true });
+                  Axios.put(
+                    process.env.REACT_APP_API_URL +
+                      "/nutritionist-appointments/" +
+                      this.state.appointment.id,
+                    {
+                      review: this.state.review,
+                    },
+                    {
+                      headers: {
+                        Authorization: `Bearer ${localStorage.getItem(
+                          process.env.REACT_APP_TOKEN_NAME
+                        )}`,
+                      },
+                    }
+                  )
+                    .then((res) => {
+                      this.setState({
+                        loadingReview: false,
+                        modalIsOpen: false,
+                        appointment: "",
+                        review: "",
+                      });
+                    })
+                    .catch((res) => {
+                      this.setState({ error: "Error saving review..." });
+                    });
+                }
+              }}
+            >
+              {this.state.loadingReview && <Spinner color="white" />}
+              {!this.state.loadingReview && "Save"}
+            </Button>
+          </ModalFooter>
+        </Modal>
       </div>
     );
   }
