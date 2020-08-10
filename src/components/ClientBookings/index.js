@@ -81,6 +81,7 @@ class ClientBookings extends Component {
                               <th>Client Name</th>
                               <th>Date</th>
                               <th>Time</th>
+                              <th>Review</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -92,6 +93,7 @@ class ClientBookings extends Component {
                                 <td>
                                   {a.date_time.split("T")[1].split(".")[0]}
                                 </td>
+                                <td>{a.review}</td>
                               </tr>
                             ))}
                           </tbody>
