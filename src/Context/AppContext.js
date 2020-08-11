@@ -13,6 +13,7 @@ class AppProvider extends Component {
       olive: 0,
       egg: 0,
     },
+    totalAmount:0
   };
 
   componentDidMount() {
@@ -69,29 +70,38 @@ class AppProvider extends Component {
     this.setState({ dietTable });
   };
 
+  setTotalAmount = (amount) => {
+    let { totalAmount } = this.state;
+    totalAmount  = amount;
+    this.setState({totalAmount });
+  };
+
   render() {
     const { children } = this.props;
 
     const { user } = this.state;
     const { dietTable } = this.state;
+    const { totalAmount } = this.state;
 
     const { setUser } = this;
     const { setRice } = this;
     const { setChicken } = this;
     const { setOlive } = this;
     const { setEgg } = this;
-
+const { setTotalAmount } = this;
     return (
       <AppContext.Provider
         value={{
           user,
           dietTable,
+          totalAmount,
 
           setUser,
           setRice,
           setChicken,
           setOlive,
           setEgg,
+          setTotalAmount,
         }}
       >
         {children}

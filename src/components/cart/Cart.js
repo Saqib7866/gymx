@@ -128,6 +128,7 @@ class Cart extends Component {
     this.setState({
       totalAmount: total,
     });
+    this.context.setTotalAmount(total)
   }
 
   //Reset Quantity
